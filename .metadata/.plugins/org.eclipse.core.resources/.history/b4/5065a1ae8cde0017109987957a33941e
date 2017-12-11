@@ -1,0 +1,9 @@
+
+public class Tank extends Vehicle {
+
+	public Tank(int wheels, int length, int weight) {
+		super(wheels, length, weight);
+		// TODO Auto-generated constructor stub
+	}
+
+}

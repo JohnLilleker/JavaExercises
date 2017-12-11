@@ -1,0 +1,24 @@
+
+public class Intermediate {
+	public static void main(String [] args) {
+		Intermediate i = new Intermediate();
+		System.out.println(i.blackjack(18, 21));
+		System.out.println(i.blackjack(20, 18));
+		System.out.println(i.blackjack(22, 22));
+	}
+	
+	public int blackjack(int x, int y) {
+		int diff1 = 21 - x;
+		int diff2 = 21 - y;
+		if (diff1 < 0 && diff2 < 0) return 0;
+		
+		if (diff1 < 0) return y;
+		if (diff2 < 0) return x;
+		
+		return (diff1 < diff2) ? x : y;
+	}
+	
+	public int unqueSum(int x0, int x1, int x2) {
+		
+	}
+}

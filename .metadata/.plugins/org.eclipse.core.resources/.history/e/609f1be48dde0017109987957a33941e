@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+
+public class Garage {
+
+	private ArrayList<Vehicle> vehicles;
+
+	public Garage(Vehicle... initialCars) {
+		vehicles = new ArrayList<>();
+		for (Vehicle car : initialCars) {
+			vehicles.add(car);
+		}
+	}
+	
+	public void printVehicles() {
+		vehicles.forEach(vehicle -> System.out.println(vehicle));
+	}
+	
+}

@@ -1,0 +1,12 @@
+
+public class Intermediate {
+	public static void main(String [] args) {
+		Intermediate i = new Intermediate();
+		
+	}
+	
+	public int blackjack(int x, int y) {
+		int diff1 = 21 - x;
+		int diff2 = 21 - y;
+	}
+}

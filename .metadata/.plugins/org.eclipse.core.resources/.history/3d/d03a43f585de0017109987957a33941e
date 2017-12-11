@@ -1,0 +1,12 @@
+
+public abstract class Vehicle {
+	protected int wheels;
+	protected int length;
+	protected int weight;
+
+	public Vehicle(int wheels, int length, int weight) {
+		this.wheels = wheels;
+		this.length = length;
+		this.weight = weight;
+	}
+}

@@ -1,0 +1,15 @@
+
+public class Tank extends Vehicle {
+
+	private int calibre;
+	
+	public Tank(int calibre, int wheels, int length, int weight) {
+		super(wheels, length, weight);
+		this.calibre = calibre;
+	}
+
+	public int getCalibre() {
+		return calibre;
+	}
+
+}
