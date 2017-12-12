@@ -1,0 +1,51 @@
+package paintExercise;
+
+import java.util.ArrayList;
+
+public class PaintWizard {
+
+	private ArrayList<Paint> paints = new ArrayList<>();
+
+	public PaintWizard() {
+		// initialise paint here?
+		Paint p1 = new Paint("CheapoMax", 20, 19.99f, 10);
+		Paint p2 = new Paint("AverageJoes", 15, 17.99f, 11);
+		Paint p3 = new Paint("DuluxourousPaints", 10, 25.f, 20);
+		paints.add(p1);
+		paints.add(p2);
+		paints.add(p3);
+	}
+
+	public Paint bestForFloor(int floorSize) {
+		Paint best = null;
+		double cheapest = Double.MAX_VALUE;
+
+		for (Paint p : paints) {
+			// TODO this logic...
+			System.out.println(p.getName());
+
+			// how much each tin can cover
+			double coverage = (double) p.getCapacity() * p.getCoverage();
+			System.out.println(coverage);
+			// minimum needed for the floor size given
+			int cansNeeded = (int) Math.ceil(floorSize / coverage);
+			System.out.println(cansNeeded);
+
+			double price = cansNeeded * p.getPrice();
+			System.out.println(price);
+
+			if (price < cheapest) {
+				System.out.println("best so far");
+				cheapest = price;
+				best = p;
+			}
+
+		}
+
+		return best;
+	}
+
+	public void addPaint(Paint paint) {
+		paints.add(paint);
+	}
+}

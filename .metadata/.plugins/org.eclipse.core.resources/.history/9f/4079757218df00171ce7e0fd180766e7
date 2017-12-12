@@ -1,0 +1,43 @@
+package fileIO;
+
+import java.util.ArrayList;
+
+public class PeopleHandler {
+	private ArrayList<Person> people;
+
+	public PeopleHandler() {
+		people = new ArrayList<>();
+	}
+
+	public void addPerson(Person subject) {
+		people.add(subject);
+	}
+
+	public void toFile(String file) {
+		// TODO read to file
+	}
+
+	public static PeopleHandler fromFile(String file) {
+		// TODO get people from the file
+		return null;
+	}
+
+	public Person findPerson(String name) {
+		Person wanted = null;
+		for (Person person : people) {
+			if (person.getName().equalsIgnoreCase(name)) {
+				wanted = person;
+				break;
+			}
+		}
+		return wanted;
+	}
+
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for (Person person : people) {
+			builder.append(person.toString() + "\n");
+		}
+		return builder.toString();
+	}
+}

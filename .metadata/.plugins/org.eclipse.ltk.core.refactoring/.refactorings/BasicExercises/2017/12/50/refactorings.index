@@ -3,3 +3,14 @@
 1513003164997	Encapsulate field 'name'
 1513007938736	Encapsulate field 'make'
 1513008134035	Encapsulate field 'calibre'
+1513020962213	Move compilation units
+1513020967369	Move compilation unit
+1513020979259	Move compilation units
+1513023939952	Rename field 'jobTitle'
+1513023962794	Rename local variable 'jobTitle'
+1513084110482	Delete element
+1513084192831	Move package
+1513084204749	Move package
+1513084207506	Move package
+1513084212383	Move compilation unit
+1513084441349	Delete element

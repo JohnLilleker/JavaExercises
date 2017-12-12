@@ -1,0 +1,24 @@
+package paintExercise;
+
+public class PaintWizard {
+
+	private Paint p1 = new Paint("CheapoMax", 20, 19.99f, 10);
+	private Paint p2 = new Paint("AverageJoes", 15, 17.99f, 11);
+	private Paint p3 = new Paint("DuluxourousPaints", 10, 25.f, 20);
+	
+	public PaintWizard() {
+		
+	}
+
+	public Paint bestForFloor(int floorSize) {
+		// TODO this logic
+		return null;
+	}
+
+	/*
+	 * creates the Paint types declared can add more later through
+	 * addPaint(Paint) (maybe)
+	 * 
+	 * Constructor initialises the ones mentioned
+	 */
+}

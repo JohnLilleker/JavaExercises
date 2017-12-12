@@ -1,0 +1,10 @@
+package paintExercise;
+
+public class Main {
+
+	public static void main(String[] args) {
+		PaintWizard paintWizard = new PaintWizard();
+		System.out.println(paintWizard.bestForFloor(20000000000000000000000000000000000000));
+	}
+
+}

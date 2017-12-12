@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="Exercises"/>
+<fullyQualifiedTypeName name="Intermediate"/>
+<fullyQualifiedTypeName name="paintExercise.PaintWizard"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="fileIO.PeopleHandler"/>
+</qualifiedTypeNameHistroy>

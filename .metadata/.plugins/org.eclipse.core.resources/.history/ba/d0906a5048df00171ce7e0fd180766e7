@@ -1,0 +1,16 @@
+package paintExercise;
+
+public class Main {
+
+	public static void main(String[] args) {
+		PaintWizard paintWizard = new PaintWizard();
+		int size = 2;
+
+		for (int i = 1; i <= 1000000; i *= 10) {
+			System.out.println("Size of floor = " + size * i + " m2");
+			System.out.println("best paint is " + paintWizard.bestForFloor(size * i));
+			System.out.println();
+		}
+	}
+
+}

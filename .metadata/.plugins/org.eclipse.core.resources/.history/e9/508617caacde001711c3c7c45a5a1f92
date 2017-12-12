@@ -1,0 +1,13 @@
+package paintExercise;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Paint p = new Paint("CheapoMax", 20, 19.99f, 10);
+		Paint p = new Paint("AverageJoes", 15, 17.99f, 11);
+		Paint p = new Paint("DuluxourousPaints", 10, 25.f, 20);
+		System.out.println(p);
+
+	}
+
+}

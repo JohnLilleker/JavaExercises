@@ -1,0 +1,24 @@
+package fileIO;
+
+import java.util.ArrayList;
+
+public class PeopleHandler {
+	private ArrayList<Person> people;
+	
+	public PeopleHandler() {
+		people = new ArrayList<>();
+	}
+	
+	public void addPerson(Person subject) {
+		people.add(subject);
+	}
+	
+	public void toFile(String file) {
+		// read to file
+	}
+	
+	public static PeopleHandler fromFile(String file) {
+		// get people from the file
+		return null;
+	}
+}
