@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Calculator {
+
+	public ArrayList<String> calcuate(int a, int b, int c) {
+		ArrayList<String> combinations = new ArrayList<String>();
+
+		ArrayList<Integer> sorted = new ArrayList<>();
+		sorted.add(a);
+		sorted.add(b);
+		sorted.add(c);
+		
+		Collections.sort(sorted);
+
+		return combinations;
+	}
+}

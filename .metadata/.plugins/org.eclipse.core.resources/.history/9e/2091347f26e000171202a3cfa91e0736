@@ -1,0 +1,11 @@
+import java.util.ArrayList;
+
+public class Calculator {
+	public ArrayList<String> calcuate(int a, int b, int c) {
+		ArrayList<String> combinations = new ArrayList<String>();
+		
+		
+		
+		return combinations;
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;Main.fibbonacci(...)&apos; to &apos;fibonacci&apos;&#x0D;&#x0A;- Original project: &apos;OfflineExercise&apos;&#x0D;&#x0A;- Original element: &apos;Main.fibbonacci(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;Main.fibonacci(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;fibbonacci&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{Main.java[Main~fibbonacci~I" name="fibonacci" references="true" stamp="1513172935402" version="1.0"/>
+</session>

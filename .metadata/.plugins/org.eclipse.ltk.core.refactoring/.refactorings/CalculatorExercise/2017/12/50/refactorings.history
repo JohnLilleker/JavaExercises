@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;Calculator.calculat4_bruteForce(...)&apos; to &apos;calculate&apos;&#x0D;&#x0A;- Original project: &apos;CalculatorExercise&apos;&#x0D;&#x0A;- Original element: &apos;Calculator.calculat4_bruteForce(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;Calculator.calculate(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;calculat4_bruteForce&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{Calculator.java[Calculator~calculat4_bruteForce~I~I~I~I" name="calculate" references="true" stamp="1513185361643" version="1.0"/>
+</session>
