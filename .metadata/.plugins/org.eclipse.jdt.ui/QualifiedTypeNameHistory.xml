@@ -2,16 +2,24 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="Exercises"/>
 <fullyQualifiedTypeName name="Intermediate"/>
-<fullyQualifiedTypeName name="paintExercise.PaintWizard"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="fileIO.PeopleHandler"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="ReverseFactorial"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="Calculator"/>
+<fullyQualifiedTypeName name="garageExercise.Garage"/>
+<fullyQualifiedTypeName name="garageExercise.Bike"/>
+<fullyQualifiedTypeName name="garageExercise.Tank"/>
+<fullyQualifiedTypeName name="garageExercise.Car"/>
+<fullyQualifiedTypeName name="garageExercise.Vehicle"/>
+<fullyQualifiedTypeName name="paintExercise.PaintWizard"/>
+<fullyQualifiedTypeName name="fileIO.Person"/>
+<fullyQualifiedTypeName name="org.junit.Assert"/>
+<fullyQualifiedTypeName name="tests.PeopleHandlerTests"/>
+<fullyQualifiedTypeName name="fileIO.PeopleHandler"/>
 </qualifiedTypeNameHistroy>

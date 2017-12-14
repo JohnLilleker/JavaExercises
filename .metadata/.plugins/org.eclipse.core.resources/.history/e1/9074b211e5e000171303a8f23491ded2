@@ -1,0 +1,15 @@
+package logic;
+
+public class Newspaper extends Item {
+	private int day;
+	private int month;
+	private boolean isTabloid;
+
+	public Newspaper(String title, String author, int day, int month, int yearPublished, int numberOfPages,
+			boolean isTabloid, int copies) {
+		super(title, author, yearPublished, numberOfPages, copies);
+		this.day = day;
+		this.month = month;
+		this.isTabloid = isTabloid;
+	}
+}

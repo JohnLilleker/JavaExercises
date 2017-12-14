@@ -1,0 +1,6 @@
+package logic;
+
+public class Newspaper extends Item {
+	private int day;
+	private int month;
+}

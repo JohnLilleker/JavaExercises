@@ -1,0 +1,17 @@
+package tests;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import fileIO.PeopleHandler;
+
+public class PeopleHandlerTests {
+
+	@Test
+	public void testNoPeople() {
+		PeopleHandler handler = new PeopleHandler();
+		assertEquals(0, handler.howManyPeople());
+	}
+
+}

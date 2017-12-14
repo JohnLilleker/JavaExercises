@@ -1,0 +1,83 @@
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import logic.Book;
+import logic.Item;
+import logic.Library;
+
+public class LibraryTest {
+
+	Library library;
+
+	@Before
+	public void setup() {
+		library = new Library();
+	}
+
+	@Test
+	public void testEmptyLibrary() {
+		assertEquals(0, library.getNumberOfItems());
+		assertEquals(0, library.getNumberOfUsers());
+	}
+
+	@Test
+	public void testCheckOut() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCheckIn() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testAddItem() {
+		Item book = new Book("A book", "A human", "Place", 2070, 3, true, 3);
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testFindItemByID() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRemoveItem() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testUpdateItem() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRegisterPerson() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testFindPersonByID() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeletePerson() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testUpdatePerson() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testFileIO() {
+		fail("Not yet implemented");
+	}
+
+}

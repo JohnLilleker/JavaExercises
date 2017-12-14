@@ -1,5 +1,6 @@
 
 public class Main {
+
 	public static void main(String[] args) {
 		System.out.println("Ex 1");
 		System.out.println(doubleChar("The"));
@@ -149,17 +150,15 @@ public class Main {
 	}
 
 	public static int fibonacci(int n) {
-		if (n == 0)
+		if (n <= 0)
 			return 0;
 		if (n == 1)
-			return 1;
-		if (n == 2)
 			return 1;
 		return fibonacci(n - 1) + fibonacci(n - 2);
 	}
 
 	public static int bunnyEars(int bunnies) {
-		if (bunnies == 0)
+		if (bunnies <= 0)
 			return 0;
 		return 2 + bunnyEars(bunnies - 1);
 	}

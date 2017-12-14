@@ -1,0 +1,7 @@
+package logic;
+
+public interface Storable {
+	static int idCount = 0;
+
+	int getID();
+}

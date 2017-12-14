@@ -1,0 +1,26 @@
+package logic;
+
+import java.util.ArrayList;
+
+public class User implements Storable {
+	private String name;
+	private int id;
+	private ArrayList<Integer> books;
+	private int age;
+
+	private static int userID = 0;
+
+	public User(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+		books = new ArrayList<>();
+
+		id = userID;
+		userID++;
+	}
+
+	public int getID() {
+		return id;
+	}
+}

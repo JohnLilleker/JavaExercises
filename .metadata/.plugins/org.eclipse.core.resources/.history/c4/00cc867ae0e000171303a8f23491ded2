@@ -1,0 +1,29 @@
+package logic;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class UserTest {
+
+	User subject;
+
+	@Before
+	public void setup() {
+		subject = new User("Alice", 12);
+	}
+
+	@Test
+	public void testAddBook() {
+		fail("Not yet implemented");
+		subject.addItem(1);
+		subject.addItem(3);
+	}
+
+	@Test
+	public void testRemoveBook() {
+		fail("Not yet implemented");
+	}
+
+}

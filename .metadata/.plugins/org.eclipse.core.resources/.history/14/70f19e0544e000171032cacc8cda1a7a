@@ -1,0 +1,75 @@
+package tests;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
+import org.junit.Test;
+
+import garageExercise.Bike;
+import garageExercise.Car;
+import garageExercise.Garage;
+import garageExercise.Tank;
+import garageExercise.Vehicle;
+
+public class GarageTests {
+
+	// @Test
+	// public void test() {
+	// fail("Not yet implemented");
+	// }
+
+	@Test
+	public void testCreateEmptyGarage() {
+		Garage g = new Garage();
+		assertEquals(0, g.numberOfVehiclesInGarage());
+	}
+
+	@Test
+	public void testGarageWith1Car() {
+		Garage g = new Garage(new Bike(false, 2, 10, "1234"));
+		assertEquals(1, g.numberOfVehiclesInGarage());
+	}
+
+	@Test
+	public void testAddVehicleToGarage() {
+		Garage g = new Garage();
+		g.addVehicle(new Tank(12, 10, 1000, "1235"));
+		assertEquals(1, g.numberOfVehiclesInGarage());
+	}
+
+	@Test
+	public void testGetVehicle() {
+		Garage g = new Garage(new Car("Mini", 4, 3, 27, "1236"), new Bike(false, 2, 10, "1234"));
+		Vehicle v = g.getVehicle("1234");
+		assertNotEquals(null, v);
+		assertEquals(2, g.numberOfVehiclesInGarage());
+		assertEquals("1234", v.getID());
+	}
+
+	@Test
+	public void testRemoveVehicleById() {
+		Garage g = new Garage(new Car("Mini", 4, 3, 27, "1236"), new Bike(false, 2, 10, "1234"),
+				new Tank(12, 10, 1000, "1235"));
+		g.removeVehiclesByID("1234");
+
+		assertEquals(2, g.numberOfVehiclesInGarage());
+		assertEquals(null, g.getVehicle("1234"));
+		assertNotEquals(null, g.getVehicle("1235"));
+		assertNotEquals(null, g.getVehicle("1236"));
+	}
+
+	@Test
+	public void testRemoveVehicleByType() {
+		Garage g = new Garage(new Car("Mini", 4, 3, 27, "1236"), new Bike(false, 2, 10, "1234"),
+				new Tank(12, 10, 1000, "1235"), new Car(), new Bike(), new Tank());
+		g.removeVehiclesByID("1234");
+	}
+
+	// now then, how to jUnit...
+	/*
+	 * Test vehicle?
+	 * 
+	 * addVehicle removeVehicle calcBill empty
+	 */
+
+}

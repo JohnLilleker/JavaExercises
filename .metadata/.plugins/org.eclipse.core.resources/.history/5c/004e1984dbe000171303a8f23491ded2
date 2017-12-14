@@ -1,0 +1,11 @@
+package logic;
+
+import java.util.ArrayList;
+
+public class Library {
+	ArrayList<Storable> objects;
+
+	public Library() {
+		objects = new ArrayList<>();
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;pw&apos; in &apos;tests.PeopleHandlerTests.testReadFromFile()&apos; to &apos;handler&apos;&#x0D;&#x0A;- Original project: &apos;FileIOExercise&apos;&#x0D;&#x0A;- Original element: &apos;tests.PeopleHandlerTests.testReadFromFile().pw&apos;&#x0D;&#x0A;- Renamed element: &apos;pw&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;pw&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;tests{PeopleHandlerTests.java[PeopleHandlerTests~testReadFromFile@pw!1598!1695!1612!1613!QPeopleHandler;!0!false" name="handler" references="true" stamp="1513201599028" version="1.0"/>
+</session>

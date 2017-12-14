@@ -1,0 +1,17 @@
+package tests;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import paintExercise.PaintWizard;
+
+public class PaintTests {
+
+	@Test
+	public void testBestForSmallFloor() {
+		PaintWizard pw = new PaintWizard();
+		assertEquals("AverageJoes", pw.bestForFloor(20).getName());
+	}
+
+}

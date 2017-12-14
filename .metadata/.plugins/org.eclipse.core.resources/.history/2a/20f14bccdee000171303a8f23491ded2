@@ -1,0 +1,12 @@
+package logic;
+
+public class Book extends Item {
+
+	private boolean isHardBack;
+	
+	public Book(String title, int yearPublished, int numberOfPages, int copies) {
+		super(title, yearPublished, numberOfPages, copies);
+		// TODO Auto-generated constructor stub
+	}
+
+}

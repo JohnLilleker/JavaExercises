@@ -1,0 +1,11 @@
+package logic;
+
+public class User implements Storable {
+	private String name;
+	private int id;
+	private int[] books;
+
+	public int getID() {
+		return id;
+	}
+}

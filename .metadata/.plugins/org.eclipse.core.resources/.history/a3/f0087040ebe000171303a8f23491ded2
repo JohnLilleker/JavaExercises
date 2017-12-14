@@ -1,0 +1,50 @@
+package logic;
+
+import java.util.ArrayList;
+
+public class Library {
+	ArrayList<Storable> objects;
+
+	public Library() {
+		objects = new ArrayList<>();
+	}
+
+	public int getNumberOfBooks() {
+		return 0;
+	}
+
+	public int getNumberOfUsers() {
+		return 0;
+	}
+
+	public User getUserByID(int id) {
+		return null;
+	}
+
+	public Item getItemByID(int id) {
+		return null;
+	}
+
+	public void checkOut(int bookID, int userID) {
+
+	}
+
+	public void checkOut(Item bookID, User userID) {
+
+	}
+
+	public void checkIn(int bookID, int userID) {
+
+	}
+
+	public void checkIn(Item bookID, User userID) {
+
+	}
+
+	/*
+	 * • Check out item • Check in item • Add item • Remove item • Update item •
+	 * Register person • Delete person • Update person
+	 * 
+	 * file io
+	 */
+}

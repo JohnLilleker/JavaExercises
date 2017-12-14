@@ -62,7 +62,6 @@ public class PeopleHandler {
 			bReader = new BufferedReader(fReader);
 
 			String input;
-
 			while ((input = bReader.readLine()) != null) {
 				String[] values = input.split(",");
 
@@ -98,6 +97,10 @@ public class PeopleHandler {
 			}
 		}
 		return wanted;
+	}
+
+	public int howManyPeople() {
+		return people.size();
 	}
 
 	public String toString() {

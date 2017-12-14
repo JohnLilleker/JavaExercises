@@ -1,0 +1,15 @@
+package tests;
+
+import org.junit.Test;
+
+import fileIO.PeopleHandler;
+
+public class PeopleHandlerTests {
+
+	@Test
+	public void testAddPeople() {
+		PeopleHandler handler = new PeopleHandler();
+
+	}
+
+}
