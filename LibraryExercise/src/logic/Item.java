@@ -6,18 +6,19 @@ public abstract class Item implements Storable {
 	private int numberOfPages;
 	private String author;
 	private int id;
-	private int copies;
+	// stock level
+	private int stockLevel;
 
 	private boolean isCheckedOut = false;
 	private static int bookID = 0;
 
-	public Item(String title, String author, int yearPublished, int numberOfPages, int copies) {
+	public Item(String title, String author, int yearPublished, int numberOfPages, int stockLevel) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.yearPublished = yearPublished;
 		this.numberOfPages = numberOfPages;
-		this.copies = copies;
+		this.stockLevel = stockLevel;
 		id = bookID;
 		bookID++;
 
@@ -51,12 +52,12 @@ public abstract class Item implements Storable {
 		return id;
 	}
 
-	public int getNumberOfCopies() {
-		return copies;
+	public int getStockLevel() {
+		return stockLevel;
 	}
 
-	public void setNumberOfCopies(int copies) {
-		this.copies = copies;
+	public void setStockLevel(int stockLevel) {
+		this.stockLevel = stockLevel;
 	}
 
 	public String getAuthor() {

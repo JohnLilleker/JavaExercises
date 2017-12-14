@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class User implements Storable {
 	private String name;
 	private int id;
+	// items the user has. Store ids as no real need to give objects I feel
+	// also gives it a bit more of a database feel and helps when writing to file
 	private ArrayList<Integer> items;
 	private int age;
 
@@ -36,7 +38,7 @@ public class User implements Storable {
 		this.age = age;
 	}
 
-	public ArrayList<Integer> getCurrentBooks() {
+	public ArrayList<Integer> getCurrentItems() {
 		return items;
 	}
 

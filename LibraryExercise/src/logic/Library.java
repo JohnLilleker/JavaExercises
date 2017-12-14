@@ -43,16 +43,45 @@ public class Library {
 		return checkOut(getItemByID(bookID), getUserByID(userID));
 	}
 
-	public boolean checkOut(Item bookID, User userID) {
-		return false;
+	public boolean checkOut(Item book, User user) {
+
+		// sanity check
+		if (book == null || user == null)
+			return false;
+
+		int bookStockLevel = book.getStockLevel();
+		// can't give books if none left
+		if (bookStockLevel < 1)
+			return false;
+
+		// give the user the book
+		user.addItem(book.getID());
+		// reduce stock
+		book.setStockLevel(bookStockLevel - 1);
+
+		return true;
 	}
 
-	public void checkIn(int bookID, int userID) {
-		checkIn(getItemByID(bookID), getUserByID(userID));
+	public boolean checkIn(int bookID, int userID) {
+		return checkIn(getItemByID(bookID), getUserByID(userID));
 	}
 
-	public void checkIn(Item bookID, User userID) {
+	public boolean checkIn(Item book, User user) {
 
+		// sanity check
+		if (book == null || user == null)
+			return false;
+
+		// hasn't got the book
+		if (!user.getCurrentItems().contains(book.getID()))
+			return false;
+
+		// take the book
+		user.removeItem(book.getID());
+		// increment stock level
+		book.setStockLevel(book.getStockLevel() + 1);
+
+		return true;
 	}
 
 	public boolean addItem(Item item) {
@@ -111,7 +140,29 @@ public class Library {
 	}
 
 	public boolean updateUser(int index, String name, int age) {
-		return true;
+		return false;
+	}
+
+	public ArrayList<Item> getAllItems() {
+		ArrayList<Item> items = new ArrayList<>();
+
+		for (Storable s : objects) {
+			if (s instanceof Item) {
+				items.add((Item) s);
+			}
+		}
+		return items;
+	}
+
+	public ArrayList<User> getAllUsers() {
+		ArrayList<User> users = new ArrayList<>();
+
+		for (Storable s : objects) {
+			if (s instanceof User) {
+				users.add((User) s);
+			}
+		}
+		return users;
 	}
 
 	/*

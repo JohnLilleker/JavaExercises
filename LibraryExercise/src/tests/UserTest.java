@@ -1,4 +1,4 @@
-package logic;
+package tests;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import logic.User;
 
 public class UserTest {
 
@@ -23,7 +25,7 @@ public class UserTest {
 		ArrayList<Integer> expected = new ArrayList<>();
 		expected.add(1);
 		expected.add(3);
-		assertEquals(expected, subject.getCurrentBooks());
+		assertEquals(expected, subject.getCurrentItems());
 	}
 
 	@Test
@@ -34,7 +36,7 @@ public class UserTest {
 		assertTrue(worked);
 		ArrayList<Integer> expected = new ArrayList<>();
 		expected.add(1);
-		assertEquals(expected, subject.getCurrentBooks());
+		assertEquals(expected, subject.getCurrentItems());
 	}
 
 	@Test
@@ -46,7 +48,7 @@ public class UserTest {
 		ArrayList<Integer> expected = new ArrayList<>();
 		expected.add(1);
 		expected.add(3);
-		assertEquals(expected, subject.getCurrentBooks());
+		assertEquals(expected, subject.getCurrentItems());
 	}
 
 }

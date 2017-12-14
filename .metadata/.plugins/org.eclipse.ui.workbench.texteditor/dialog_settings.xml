@@ -2,17 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="assertNull(" key="selection"/>
+		<item value="new Book" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="new Book"/>
+			<item value="fail"/>
 			<item value="assertEquals(null, "/>
 			<item value="assertNotEquals(null, "/>
 			<item value="Ex"/>
 		</list>
 		<list key="replacehistory">
+			<item value="// TODO\Rfail"/>
 			<item value="assertNull("/>
 			<item value="assertNull"/>
 			<item value="assertNotNull("/>
