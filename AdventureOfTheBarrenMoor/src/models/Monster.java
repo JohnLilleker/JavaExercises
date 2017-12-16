@@ -1,6 +1,6 @@
 package models;
 
-public class Monster extends GamePeice {
+public class Monster extends GamePiece {
 
 	private boolean isSleeping = true;
 
@@ -8,28 +8,26 @@ public class Monster extends GamePeice {
 		super(xPosition, yPosition);
 	}
 
-	public void moveToPlayer(Player player) {
-		if (!isSleeping || getDistFromPeice(player) < 5) {
-
-			if (isSleeping) {
-				System.out.println("Suddenly, you hear a large growling noise...");
-			}
-
-			isSleeping = false;
+	public void moveToPlayer(Player player, BarrenMoor barrenMoor) {
+		if (!isSleeping) {
 			int xDist = player.getXPosition() - this.getXPosition();
 			int yDist = player.getYPosition() - this.getYPosition();
 			if (Math.abs(xDist) > Math.abs(yDist)) {
 				int dx = (xDist > 0) ? 1 : -1;
-				move(dx, 0);
+				move(dx, 0, barrenMoor);
 			} else {
 				int dy = (yDist > 0) ? 1 : -1;
-				move(0, dy);
+				move(0, dy, barrenMoor);
 			}
 		}
 	}
 
 	public boolean isAsleep() {
 		return isSleeping;
+	}
+
+	public void wake() {
+		isSleeping = false;
 	}
 
 }

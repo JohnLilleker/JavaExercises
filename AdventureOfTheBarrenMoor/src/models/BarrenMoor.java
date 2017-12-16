@@ -9,13 +9,21 @@ public class BarrenMoor {
 	private Treasure treasure;
 	private ArrayList<Monster> monsters;
 	private Scanner input;
-	public static final int MOOR_SIZE = 20;
+	private int width;
+	private int height;
+	private boolean playerHasMap;
+	private Map map;
 
-	public BarrenMoor() {
+	public BarrenMoor(int width, int height) {
+
+		this.width = width;
+		this.height = height;
+		this.playerHasMap = false;
 
 		input = new Scanner(System.in);
-		initialiseTreasure();
-		makeMonsters(MOOR_SIZE / 10);
+		initialiseTreasures();
+		monsters = new ArrayList<>();
+		makeMonsters(width / 10);
 
 		String name = getName();
 		if (name.equalsIgnoreCase("quit")) {
@@ -30,24 +38,28 @@ public class BarrenMoor {
 		input.close();
 	}
 
+	public int getHeight() {
+		return height;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	// make a number of monsters and add them to The Barren Moor
 	private void makeMonsters(int numberOfMonsters) {
-		monsters = new ArrayList<>();
 
 		for (int i = 0; i < numberOfMonsters; i++) {
-			int monsterX;
-			int monsterY;
-			do {
-				monsterX = (int) Math.round((Math.random() * MOOR_SIZE) - MOOR_SIZE / 2);
-				monsterY = (int) Math.round((Math.random() * MOOR_SIZE) - MOOR_SIZE / 2);
-			} while (monsterX == 0 && monsterY == 0);
+			int[] monsterPos = placePeice();
 
-			monsters.add(new Monster(monsterX, monsterY));
+			monsters.add(new Monster(monsterPos[0], monsterPos[1]));
 		}
 
 	}
 
 	// start story
-	// boolean return means the player wishes to continue;
+	// boolean return means the player wishes to continue (true) or quit early on
+	// (false)
 	private boolean introduction() {
 		System.out.printf("Ok %s...", player.getName());
 		pauseForEffect(750);
@@ -57,12 +69,13 @@ public class BarrenMoor {
 		System.out.println("You awaken to find yourself on a barren moor, called The Barren Moor\n");
 		pauseForEffect(2500);
 		System.out.println("You find you have the ability to look around, try it");
-		Command c;
+		String c;
 		do {
 			System.out.println("Enter 'look'");
-			c = getInput();
-		} while (c != Command.LOOK && c != Command.QUIT);
-		if (c == Command.QUIT)
+			System.out.printf("%s > ", player.getName());
+			c = readConsole();
+		} while (!(c.equalsIgnoreCase("look") || c.equalsIgnoreCase("quit")));
+		if (c.equalsIgnoreCase("quit"))
 			return false;
 
 		System.out.println("You are surrounded by oppressive, close fog...");
@@ -74,7 +87,7 @@ public class BarrenMoor {
 		System.out.println("It seems drawn to something, maybe a way out?");
 		pauseForEffect(1500);
 		System.out.println(
-				"After overcoming the shock of being relocated to this desolation you find you can move freely, either north, south east or west");
+				"After overcoming the shock of being relocated to this desolation you find you can move freely,\n either north, south east or west");
 		pauseForEffect(750);
 		return true;
 	}
@@ -83,21 +96,31 @@ public class BarrenMoor {
 	private Command getInput() {
 
 		Command command = null;
+		// tell them about "help" if they are struggling
+		int wrongCount = 0;
+		// prevent the loop condition being called multiple times, it's relatively
+		// complex
+		boolean wrong = true;
 
 		do {
-
+			if (wrongCount > 2)
+				System.out.println("If you don't know what to do, type \"help\"");
 			System.out.printf("%s > ", player.getName());
 			String inputString = readConsole();
+			if (inputString.equals(""))
+				continue;
 			for (Command c : Command.values()) {
 				if (c.toString().startsWith(inputString.toUpperCase())) {
 					command = c;
 					break;
 				}
 			}
-			if (command == null) {
+			wrong = command == null || (command == Command.MAP && !playerHasMap);
+			if (wrong) {
 				System.out.println("Not a valid Command");
+				wrongCount++;
 			}
-		} while (command == null);
+		} while (wrong);
 
 		return command;
 	}
@@ -118,22 +141,32 @@ public class BarrenMoor {
 		return name;
 	}
 
-	// place the treasure at a random coordinate
-	private void initialiseTreasure() {
-		int treasureX;
-		int treasureY;
-		do {
-			treasureX = (int) Math.round((Math.random() * MOOR_SIZE) - MOOR_SIZE / 2);
-			treasureY = (int) Math.round((Math.random() * MOOR_SIZE) - MOOR_SIZE / 2);
-		} while (treasureX == 0 && treasureY == 0);
-		treasure = new Treasure(treasureX, treasureY);
+	// place the treasure at random coordinates as well as any other objects
+	private void initialiseTreasures() {
+		int[] treasurePos = placePeice();
+		treasure = new Treasure(treasurePos[0], treasurePos[1]);
 
+		int[] mapPos = placePeice();
+		map = new Map(mapPos[0], mapPos[1]);
+
+	}
+
+	// finds a random position on the moor that the player is not on
+	private int[] placePeice() {
+		int posX;
+		int posY;
+		do {
+			posX = (int) Math.round((Math.random() * width) - width / 2);
+			posY = (int) Math.round((Math.random() * height) - height / 2);
+		} while (posX == 0 && posY == 0); // player always starts at 0,0
+		return new int[] { posX, posY };
 	}
 
 	// while not game over, show state, get input, update game, repeat
 	private void gameLoop() {
 
 		while (!gameover()) {
+			System.out.println();
 			observe();
 			Command command = getInput();
 			if (!updateGame(command)) {
@@ -143,13 +176,26 @@ public class BarrenMoor {
 		}
 	}
 
-	// player location and 'watch' reading
+	// 'watch' reading
 	private void observe() {
-		double distance = player.getDistFromPeice(treasure);
-		System.out.printf("\nPlayer is at %d, %d\n", player.getXPosition(), player.getYPosition());
-		System.out.printf("The watch says %.3fm\n", distance);
+		double distanceToTreasure = player.getDistFromPeice(treasure);
+
+		if (playerHasMap) {
+			System.out.printf("The watch says %.3fm\n", distanceToTreasure);
+		} else {
+			double distanceToMap = player.getDistFromPeice(map);
+
+			double interest;
+			if (distanceToTreasure < distanceToMap) {
+				interest = distanceToTreasure;
+			} else {
+				interest = distanceToMap;
+			}
+			System.out.printf("The watch says %.3fm\n", interest);
+		}
 	}
 
+	// help menu, describes all relevant commands
 	private void printHelp() {
 		System.out.println("Controls:");
 		System.out.println(" north : move your character north");
@@ -157,8 +203,13 @@ public class BarrenMoor {
 		System.out.println(" south : move your character south");
 		System.out.println(" west  : move your character west");
 		System.out.println(" look  : observe the surroundings, this could help in a fix");
+		if (playerHasMap)
+			System.out.println(" map   : view the magical map");
 		System.out.println(" help  : bring up this help message");
 		System.out.println(" quit  : end the game");
+		System.out.println();
+		System.out.println(
+				"You can either type the word fully or partially (i.e. \"n\" for \"north\"), and case doesn't matter");
 		System.out.println();
 
 	}
@@ -196,42 +247,29 @@ public class BarrenMoor {
 
 		for (Monster monster : monsters) {
 			double distanceToMonster = player.getDistFromPeice(monster);
-			int xDirection = monster.getXPosition() - player.getXPosition();
-			int yDirection = monster.getYPosition() - player.getYPosition();
+			String direction = directionOfPiece(monster);
 
-			// which direction is the treasure in?
-			Command longitudinal = (yDirection > 0) ? Command.NORTH : Command.SOUTH;
-			Command lateral = (xDirection > 0) ? Command.EAST : Command.WEST;
-			Command direction = (Math.abs(xDirection) > Math.abs(yDirection)) ? lateral : longitudinal;
-
-			if (distanceToMonster <= 5) {
-				System.out.println("There is a large shape coming from the " + direction + ", move quickly");
-			} else if (distanceToMonster <= 10 && monster.isAsleep()) {
+			if (distanceToMonster <= 3) {
+				System.out.println("You can see a monster to the " + direction + "! Run!");
+			} else if (distanceToMonster <= 7 && monster.isAsleep()) {
 				System.out.println("There is a prone figure to the " + direction + ", lets try to avoid it");
+			} else if (distanceToMonster <= 7) {
+				System.out.println("A shape is moving towards you from the " + direction + ", let's try to get away");
 			} else if (distanceToMonster <= 10) {
-				System.out.println("A shape is moving towards you from the " + direction + ", lets try to get away");
-			} else if (distanceToMonster <= 25 && monster.isAsleep()) {
-				System.out.println(
-						"You have a feeling there is something big to the " + direction + ", probably best to avoid");
-			} else if (distanceToMonster <= 25) {
-				System.out.println("You can here noises to the " + direction + ", but it seems far away");
+				// no need to check monster isAsleep, they wake when the player is < 5 distance
+				System.out.println("You can here noises coming from the " + direction + ", probably best to avoid");
 			}
 		}
 
 		double distanceToTreasure = player.getDistFromPeice(treasure);
-		int xDirection = treasure.getXPosition() - player.getXPosition();
-		int yDirection = treasure.getYPosition() - player.getYPosition();
 
-		// which direction is the treasure in?
-		Command longitudinal = (yDirection > 0) ? Command.NORTH : Command.SOUTH;
-		Command lateral = (xDirection > 0) ? Command.EAST : Command.WEST;
-		Command direction = (Math.abs(xDirection) > Math.abs(yDirection)) ? lateral : longitudinal;
+		String direction = directionOfPiece(treasure);
 
-		if (distanceToTreasure <= 5) {
+		if (distanceToTreasure <= 2) {
 			System.out.println("You can almost see a box to the " + direction);
-		} else if (distanceToTreasure <= 10) {
+		} else if (distanceToTreasure <= 4) {
 			System.out.println("There is a strong light comming from the " + direction);
-		} else if (distanceToTreasure <= 25) {
+		} else if (distanceToTreasure <= 7) {
 			System.out.println("There is a faint glow to the " + direction);
 		} else {
 			System.out.println("You are surrounded by dense fog");
@@ -239,58 +277,204 @@ public class BarrenMoor {
 
 	}
 
+	// gets the direction of the given GamePiece from the player
+	// returns either NORTH, SOUTH, EAST, WEST, NORTH / EAST, NORTH / WEST, SOUTH /
+	// EAST or SOUTH / WEST
+	private String directionOfPiece(GamePiece notPlayer) {
+
+		String direction = "";
+
+		int dx = notPlayer.getXPosition() - player.getXPosition();
+		int dy = notPlayer.getYPosition() - player.getYPosition();
+
+		// which direction is the treasure in?
+		Command longitudinal = (dy > 0) ? Command.NORTH : Command.SOUTH;
+		Command lateral = (dx > 0) ? Command.EAST : Command.WEST;
+
+		int abs_dx = Math.abs(dx);
+		int abs_dy = Math.abs(dy);
+
+		if (3 * abs_dx / 4 > abs_dy || abs_dy == 0) {
+			direction = lateral.toString();
+		} else if (3 * abs_dy / 4 > abs_dx || abs_dx == 0) {
+			direction = longitudinal.toString();
+		} else {
+			direction = longitudinal.toString() + " / " + lateral.toString();
+		}
+
+		return direction;
+	}
+
 	// return true if the game continues, false if the player quits
 	// interprets the users command to update the game state
 	private boolean updateGame(Command command) {
+
 		switch (command) {
+
 		case EAST:
 			System.out.println("Heading East");
-			player.move(1, 0);
+			player.move(1, 0, this);
 			break;
+
 		case LOOK:
 			describeSurroundings();
 			break;
+
 		case NORTH:
 			System.out.println("Heading North");
-			player.move(0, 1);
+			player.move(0, 1, this);
 			break;
+
 		case QUIT:
 			if (quit()) {
 				System.out.println("Thanks for playing!");
 				return false;
 			}
-			break;
-		case SOUTH:
-			System.out.println("Heading South");
-			player.move(0, -1);
-			break;
-		case WEST:
-			System.out.println("Heading West");
-			player.move(-1, 0);
-			break;
-		case HELP:
-			printHelp();
-			break;
-		case REVEAL:
-			gameState();
 			return true;
 
+		case SOUTH:
+			System.out.println("Heading South");
+			player.move(0, -1, this);
+			break;
+
+		case WEST:
+			System.out.println("Heading West");
+			player.move(-1, 0, this);
+			break;
+
+		case HELP:
+			printHelp();
+			// prevent monster eating the user while they learn how to play
+			return true;
+
+		case DEBUG:
+			gameState();
+			// this is a debug tool, the monsters can stay where they are
+			return true;
+
+		case MAP:
+			// need to move here
+			// otherwise, the map would show, then the monsters move
+			// so you never see where they are, only where they were
+			moveMonsters();
+			showMoor();
+			return true;
 		}
 
-		for (Monster monster : monsters) {
-			monster.moveToPlayer(player);
-		}
+		if (!playerHasMap && player.onTopOf(map))
+			obtainMap();
+
+		moveMonsters();
 
 		return true;
 	}
 
+	// moves the monsters, waking them if needed
+	private void moveMonsters() {
+		for (Monster monster : monsters) {
+
+			if (monster.isAsleep() && player.getDistFromPeice(monster) <= 5) {
+				String direction = this.directionOfPiece(monster);
+				System.out.println(
+						"Suddenly, you hear a large growling noise followed by movement from the " + direction + "...");
+				monster.wake();
+			}
+			monster.moveToPlayer(player, this);
+		}
+	}
+
+	// cut scene when the player gets the map and updating map variables
+	private void obtainMap() {
+		System.out.println("You notice a small piece of paper floating on the water...");
+		System.out.println("You pick it up and discover it is a map of some kind");
+		System.out.println("It must be enchanted, however, as one of the circles moves as you do...\n");
+		System.out.println("You now have a new command, \"map\"!\nWhy not try it?");
+		playerHasMap = true;
+	}
+
+	// debugging by printing the state of the game
 	private void gameState() {
+		System.out.printf("Player is at %d, %d\n", player.getXPosition(), player.getYPosition());
 		System.out.printf("Treasure is at %d, %d\n", treasure.getXPosition(), treasure.getYPosition());
+
+		String tense = "is";
+		String status = "";
+		if (playerHasMap) {
+			tense = "was";
+			status = ", but it has been collected";
+		}
+		System.out.printf("Map %s at %d, %d%s\n", tense, map.getXPosition(), map.getYPosition(), status);
+
 		for (Monster m : monsters) {
 			System.out.printf("Monster at %d, %d, asleep = %b\n", m.getXPosition(), m.getYPosition(), m.isAsleep());
 		}
 	}
 
+	// Prints The Barren Moor
+	private void showMoor() {
+		char[][] map = new char[height + 1][width + 1];
+
+		addToMap(player, map, 'o');
+		addToMap(treasure, map, 'X'); // x marks the spot
+
+		for (Monster monster : monsters) {
+			addToMap(monster, map, '@');
+		}
+
+		printMoor(map);
+	}
+
+	// actually print the moor, the previous method creates the grid
+	private void printMoor(char[][] moor) {
+
+		System.out.print(" ");
+		for (int i = 0; i < width + 1; i++) {
+			System.out.print('-');
+		}
+		System.out.println(" ");
+		for (int y = moor.length - 1; y >= 0; y--) {
+			System.out.print('|');
+			for (int x = 0; x < moor[y].length; x++) {
+				System.out.print(moor[y][x]);
+			}
+			System.out.print('|');
+			// compass points
+			if (y == (height / 2) + 1) {
+				System.out.println("   N");
+			} else if (y == height / 2) {
+				System.out.println(" W   E");
+			} else if (y == (height / 2) - 1) {
+				System.out.println("   S");
+			} else {
+				System.out.println();
+			}
+		}
+		System.out.print(" ");
+		for (int i = 0; i < width + 1; i++) {
+			System.out.print('-');
+		}
+		System.out.println(" ");
+	}
+
+	// adds a GamePiece to the map used for showing The Barren Moor
+	// Parameters are
+	// piece, either the player, treasure or a monster
+	// map, the char map used for displaying the game state
+	// mark, the char that will be used to show the piece on the map
+	private void addToMap(GamePiece piece, char[][] map, char mark) {
+		// convert peice.coordinates to index
+		// add mark to map
+		int x = piece.getXPosition();
+		int y = piece.getYPosition();
+
+		int ix = x + width / 2;
+		int iy = y + height / 2;
+
+		map[iy][ix] = mark;
+
+	}
+
+	// checks for the end game state, either the player has the treasure or has died
 	// checks for the end game state i.e. player has found the treasure
 	private boolean gameover() {
 		if (player.onTopOf(treasure)) {
@@ -308,6 +492,7 @@ public class BarrenMoor {
 		return false;
 	}
 
+	// player has been eaten. This is the cut scene
 	// end game cut scene (failed via monster death)
 	private void death() {
 		System.out.println("A monster has caught you...");
@@ -319,12 +504,14 @@ public class BarrenMoor {
 		System.out.println("Thanks for playing!");
 	}
 
+	// clear scanner and nextLine()
 	// reset input and get next line
 	private String readConsole() {
 		input.reset();
 		return input.nextLine();
 	}
 
+	// Thread.sleep with try-catch
 	// self explanatory. Thread.sleep with a try catch
 	private void pauseForEffect(long time) {
 		try {

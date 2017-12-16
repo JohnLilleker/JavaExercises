@@ -1,6 +1,6 @@
 package models;
 
-public class Player extends GamePeice {
+public class Player extends GamePiece {
 	private String name;
 
 	public Player(String name) {

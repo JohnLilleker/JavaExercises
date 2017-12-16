@@ -1,10 +1,10 @@
 package models;
 
-public abstract class GamePeice {
+public abstract class GamePiece {
 	private int xPosition;
 	private int yPosition;
 
-	public GamePeice(int xPosition, int yPosition) {
+	public GamePiece(int xPosition, int yPosition) {
 		super();
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
@@ -18,13 +18,14 @@ public abstract class GamePeice {
 		return yPosition;
 	}
 
-	public void move(int dx, int dy) {
+	// takes the barren moor for bounds checking
+	public void move(int dx, int dy, BarrenMoor barrenMoor) {
 
 		int newX = xPosition + dx;
 		int newY = yPosition + dy;
 
-		if (newX < -BarrenMoor.MOOR_SIZE / 2 || newX > BarrenMoor.MOOR_SIZE / 2 || newY < -BarrenMoor.MOOR_SIZE / 2
-				|| newY > BarrenMoor.MOOR_SIZE / 2) {
+		if (newX < -barrenMoor.getWidth() / 2 || newX > barrenMoor.getWidth() / 2 || newY < -barrenMoor.getHeight() / 2
+				|| newY > barrenMoor.getHeight() / 2) {
 			System.out.println("One does not simply walk out of the Barren Moor!");
 		}
 
@@ -34,14 +35,16 @@ public abstract class GamePeice {
 		}
 	}
 
-	public double getDistFromPeice(GamePeice other) {
+	public double getDistFromPeice(GamePiece other) {
 		int x_2 = (this.getXPosition() - other.getXPosition()) * (this.getXPosition() - other.getXPosition());
 		int y_2 = (this.getYPosition() - other.getYPosition()) * (this.getYPosition() - other.getYPosition());
 
 		return Math.sqrt(x_2 + y_2);
 	}
 
-	public boolean onTopOf(GamePeice other) {
+	public boolean onTopOf(GamePiece other) {
+		if (other == null)
+			return false;
 		return getXPosition() == other.getXPosition() && getYPosition() == other.getYPosition();
 	}
 }

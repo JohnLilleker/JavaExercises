@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		new BarrenMoor();
+		new BarrenMoor(20, 18);
 	}
 
 }

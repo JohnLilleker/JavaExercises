@@ -2,19 +2,32 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="new Book" key="selection"/>
+		<item value="moor" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="map"/>
+			<item value="= null"/>
+			<item value="== null"/>
+			<item value="he watch sa"/>
+			<item value="BarrenMoor.MOOR_WIDTH"/>
+			<item value="BarrenMoor.MOOR_HEIGHT"/>
+			<item value="piece of paper floting"/>
+			<item value="show"/>
+			<item value="update"/>
+			<item value="ets try to ge"/>
+			<item value="puase"/>
 			<item value="new Book"/>
 			<item value="fail"/>
 			<item value="assertEquals(null, "/>
 			<item value="assertNotEquals(null, "/>
-			<item value="Ex"/>
 		</list>
 		<list key="replacehistory">
+			<item value="moor"/>
+			<item value="barrenMoor.getWidth()"/>
+			<item value="barrenMoor.getHeight()"/>
 			<item value="// TODO\Rfail"/>
 			<item value="assertNull("/>
 			<item value="assertNull"/>
@@ -26,7 +39,7 @@
 		<item value="257" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="381" key="DIALOG_HEIGHT"/>
-		<item value="889" key="DIALOG_X_ORIGIN"/>
-		<item value="132" key="DIALOG_Y_ORIGIN"/>
+		<item value="993" key="DIALOG_X_ORIGIN"/>
+		<item value="342" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
