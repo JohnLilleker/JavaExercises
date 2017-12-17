@@ -14,11 +14,14 @@ public class BarrenMoor {
 	private boolean playerHasMap;
 	private Map map;
 
-	public BarrenMoor(int width, int height) {
+	private Story scenes;
+
+	public BarrenMoor(int width, int height, String script) {
 
 		this.width = width;
 		this.height = height;
 		this.playerHasMap = false;
+		scenes = new Story(script);
 
 		input = new Scanner(System.in);
 		initialiseTreasures();
@@ -32,6 +35,7 @@ public class BarrenMoor {
 		}
 		player = new Player(name);
 
+		this.scenes.setVariable("name", player.getName());
 		if (introduction())
 			gameLoop();
 
@@ -61,14 +65,7 @@ public class BarrenMoor {
 	// boolean return means the player wishes to continue (true) or quit early on
 	// (false)
 	private boolean introduction() {
-		System.out.printf("Ok %s...", player.getName());
-		pauseForEffect(750);
-		System.out.println(" now SLEEP!");
-		pauseForEffect(2500);
-
-		System.out.println("You awaken to find yourself on a barren moor, called The Barren Moor\n");
-		pauseForEffect(2500);
-		System.out.println("You find you have the ability to look around, try it");
+		showScene("intro1");
 		String c;
 		do {
 			System.out.println("Enter 'look'");
@@ -78,17 +75,7 @@ public class BarrenMoor {
 		if (c.equalsIgnoreCase("quit"))
 			return false;
 
-		System.out.println("You are surrounded by oppressive, close fog...");
-		pauseForEffect(1500);
-		System.out.println("You seem to be standing in water, dark and cold with no signs of animal life...");
-		pauseForEffect(1500);
-		System.out.println("Something catches your eye, a curious watch...");
-		pauseForEffect(1500);
-		System.out.println("It seems drawn to something, maybe a way out?");
-		pauseForEffect(1500);
-		System.out.println(
-				"After overcoming the shock of being relocated to this desolation you find you can move freely,\n either north, south east or west");
-		pauseForEffect(750);
+		showScene("intro2");
 		return true;
 	}
 
@@ -128,9 +115,7 @@ public class BarrenMoor {
 	// prompt for name
 	private String getName() {
 
-		System.out.println("Welcome, player, to The Adventure of The Barren Moor!");
-		System.out.println("Before I throw you to oblivion, I would like to know you better");
-		System.out.println("What, pray tell, is your name?");
+		showScene("welcome");
 		String name;
 
 		do {
@@ -196,6 +181,7 @@ public class BarrenMoor {
 	}
 
 	// help menu, describes all relevant commands
+	// not in the file due to the boolean logic
 	private void printHelp() {
 		System.out.println("Controls:");
 		System.out.println(" north : move your character north");
@@ -214,25 +200,6 @@ public class BarrenMoor {
 
 	}
 
-	// end of game cut scene (successful)
-	private void endGame() {
-
-		System.out.println("You found a Treasure Chest! You open it warily...");
-		pauseForEffect(1500);
-		System.out.println("It appears to be a stone of some kind...");
-		pauseForEffect(1500);
-		System.out.println("It draws you in...");
-		pauseForEffect(1500);
-		System.out.println("You reach for it...");
-		pauseForEffect(1500);
-		System.out.println("BANG!");
-		pauseForEffect(2500);
-		System.out.println("You find yourself in familiar surroundings again");
-		pauseForEffect(750);
-		System.out.println("Congratulations " + player.getName() + "! You escaped The Barren Moor!");
-
-	}
-
 	// "Are you sure you want to quit?"
 	private boolean quit() {
 		System.out.println("Are you sure?");
@@ -245,6 +212,7 @@ public class BarrenMoor {
 	// 'the glow of treasure'
 	private void describeSurroundings() {
 
+		// each of these could be a scene
 		for (Monster monster : monsters) {
 			double distanceToMonster = player.getDistFromPeice(monster);
 			String direction = directionOfPiece(monster);
@@ -313,7 +281,9 @@ public class BarrenMoor {
 
 		case EAST:
 			System.out.println("Heading East");
-			player.move(1, 0, this);
+			if (!player.move(1, 0, this)) {
+				showScene("badMove");
+			}
 			break;
 
 		case LOOK:
@@ -322,7 +292,9 @@ public class BarrenMoor {
 
 		case NORTH:
 			System.out.println("Heading North");
-			player.move(0, 1, this);
+			if (!player.move(0, 1, this)) {
+				showScene("badMove");
+			}
 			break;
 
 		case QUIT:
@@ -334,12 +306,16 @@ public class BarrenMoor {
 
 		case SOUTH:
 			System.out.println("Heading South");
-			player.move(0, -1, this);
+			if (!player.move(0, -1, this)) {
+				showScene("badMove");
+			}
 			break;
 
 		case WEST:
 			System.out.println("Heading West");
-			player.move(-1, 0, this);
+			if (!player.move(-1, 0, this)) {
+				showScene("badMove");
+			}
 			break;
 
 		case HELP:
@@ -361,8 +337,10 @@ public class BarrenMoor {
 			return true;
 		}
 
-		if (!playerHasMap && player.onTopOf(map))
-			obtainMap();
+		if (!playerHasMap && player.onTopOf(map)) {
+			showScene("findMap");
+			playerHasMap = true;
+		}
 
 		moveMonsters();
 
@@ -381,15 +359,6 @@ public class BarrenMoor {
 			}
 			monster.moveToPlayer(player, this);
 		}
-	}
-
-	// cut scene when the player gets the map and updating map variables
-	private void obtainMap() {
-		System.out.println("You notice a small piece of paper floating on the water...");
-		System.out.println("You pick it up and discover it is a map of some kind");
-		System.out.println("It must be enchanted, however, as one of the circles moves as you do...\n");
-		System.out.println("You now have a new command, \"map\"!\nWhy not try it?");
-		playerHasMap = true;
 	}
 
 	// debugging by printing the state of the game
@@ -478,30 +447,20 @@ public class BarrenMoor {
 	// checks for the end game state i.e. player has found the treasure
 	private boolean gameover() {
 		if (player.onTopOf(treasure)) {
-			endGame();
+			showScene("endGame-treasure");
+			;
 			return true;
 		}
 
 		for (Monster monster : monsters) {
 			if (monster.onTopOf(player)) {
-				death();
+				showScene("endGame-death");
+				;
 				return true;
 			}
 		}
 
 		return false;
-	}
-
-	// player has been eaten. This is the cut scene
-	// end game cut scene (failed via monster death)
-	private void death() {
-		System.out.println("A monster has caught you...");
-		pauseForEffect(750);
-		System.out.println("Your death is so sudden, your last thought is \"How am I to get home?\"...");
-		pauseForEffect(1000);
-		System.out.println("Game Over");
-		pauseForEffect(500);
-		System.out.println("Thanks for playing!");
 	}
 
 	// clear scanner and nextLine()
@@ -511,13 +470,22 @@ public class BarrenMoor {
 		return input.nextLine();
 	}
 
-	// Thread.sleep with try-catch
-	// self explanatory. Thread.sleep with a try catch
-	private void pauseForEffect(long time) {
-		try {
-			Thread.sleep(time);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+	private void showScene(String scene) {
+		ArrayList<String> lines = scenes.getScene(scene);
+
+		for (String line : lines) {
+			// a 'dramatic' pause
+			if (line.matches("^pause \\d+$")) {
+				String duration = line.split(" ")[1];
+				long time = Long.parseLong(duration);
+				try {
+					Thread.sleep(time);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				continue;
+			}
+			System.out.println(line);
 		}
 	}
 

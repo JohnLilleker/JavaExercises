@@ -1,0 +1,76 @@
+This is the story for the Barren Moor
+Another file for alternative stories can be created, but the tags ":\w" must be identical
+if any are missing, the scenes are cut...
+indentation not needed btw
+
+:welcome
+	Welcome, player, to The Adventure of The Barren Moor!
+	Before I throw you to oblivion, I would like to know you better
+	What, pray tell, is your name?
+#end
+
+:intro1
+	Ok %name%...
+	pause 750
+	Now Sleep!
+	pause 2500
+	
+	You awaken to find yourself on a barren moor, called The Barren Moor
+	pause 500
+	You find you have the ability to look around, try it
+#end
+
+:intro2
+
+	You are surrounded by oppressive, close fog...
+	pause 1500
+	You seem to be standing in water, dark and cold with no signs of animal life...
+	pause 1500
+	Something catches your eye, a curious watch...
+	pause 1500
+	It seems drawn to something, maybe a way out?
+	pause 1500
+	After overcoming the shock of being relocated to this desolation you find you can move freely,
+	either north, south east or west
+	pause 750
+#end
+
+:endGame-treasure
+	You found a Treasure Chest! You open it warily...
+	pause 1500
+	It appears to be a stone of some kind...
+	pause 1500
+	It draws you in...
+	pause 1500
+	You reach for it...
+	pause 1500
+	BANG!
+	pause 2500
+	You find yourself in familiar surroundings again!
+	pause 750
+	Congratulations %name%! You escaped The Barren Moor!
+#end
+
+:endGame-death
+	A monster has caught you...
+	pause 750
+	Your death is so sudden, your last thought is "How am I to get home?"...
+	pause 1000
+	Game Over
+	pause 500
+	Thanks for playing!
+#end
+
+:findMap
+	You notice a small piece of paper floating on the water...
+	You pick it up and discover it is a map of some kind
+	It must be enchanted, however, as one of the circles moves as you do...
+	
+	You now have a new command, "map"!
+	Why not try it?
+#end
+
+:badMove
+	One does not simply walk out of the Barren Moor!
+#end
+

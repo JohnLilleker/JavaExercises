@@ -19,19 +19,20 @@ public abstract class GamePiece {
 	}
 
 	// takes the barren moor for bounds checking
-	public void move(int dx, int dy, BarrenMoor barrenMoor) {
+	public boolean move(int dx, int dy, BarrenMoor barrenMoor) {
 
 		int newX = xPosition + dx;
 		int newY = yPosition + dy;
 
 		if (newX < -barrenMoor.getWidth() / 2 || newX > barrenMoor.getWidth() / 2 || newY < -barrenMoor.getHeight() / 2
 				|| newY > barrenMoor.getHeight() / 2) {
-			System.out.println("One does not simply walk out of the Barren Moor!");
+			return false;
 		}
 
 		else {
 			this.xPosition = newX;
 			this.yPosition = newY;
+			return true;
 		}
 	}
 
