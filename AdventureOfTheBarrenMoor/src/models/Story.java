@@ -10,7 +10,6 @@ import java.util.Map.Entry;
 // A way to customise the story / cut-scenes during the Adventure of the Barren Moor
 public class Story {
 	private HashMap<String, String> variables = new HashMap<>();
-	// may or may not be Strings for the key
 	private HashMap<String, ArrayList<String>> scenes = new HashMap<>();
 
 	public Story(String file) {
@@ -37,7 +36,7 @@ public class Story {
 				}
 
 				// end the current scene
-				if (line.equalsIgnoreCase("#end")) {
+				if (line.equalsIgnoreCase("#end") && readingScene) {
 					scenes.put(tag, scene);
 					readingScene = false;
 					scene = new ArrayList<>();
@@ -50,7 +49,6 @@ public class Story {
 				}
 
 				// anything else ignored
-				// could make it more robust, but nah
 
 			}
 
@@ -70,6 +68,10 @@ public class Story {
 		}
 	}
 
+	// variables can be used to add values that aren't constant or predefined, such
+	// as player name or the direction a monster is
+	// in the file, they are referenced by %variable%, but the '%' chars are added
+	// here and so aren't needed when passing the variable
 	public void setVariable(String variable, String value) {
 		// change variable to the format used in scenes
 		this.variables.put("%" + variable + "%", value);

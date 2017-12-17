@@ -14,6 +14,7 @@ public class BarrenMoor {
 	private boolean playerHasMap;
 	private Map map;
 
+	// where all the scenes and print strings are stored
 	private Story scenes;
 
 	public BarrenMoor(int width, int height, String script) {
@@ -163,40 +164,26 @@ public class BarrenMoor {
 
 	// 'watch' reading
 	private void observe() {
-		double distanceToTreasure = player.getDistFromPeice(treasure);
+		double distance = player.getDistFromPeice(treasure);
 
-		if (playerHasMap) {
-			System.out.printf("The watch says %.3fm\n", distanceToTreasure);
-		} else {
+		if (!playerHasMap) {
 			double distanceToMap = player.getDistFromPeice(map);
 
-			double interest;
-			if (distanceToTreasure < distanceToMap) {
-				interest = distanceToTreasure;
-			} else {
-				interest = distanceToMap;
+			// map closer than treasure
+			if (distance >= distanceToMap) {
+				distance = distanceToMap;
 			}
-			System.out.printf("The watch says %.3fm\n", interest);
 		}
+		scenes.setVariable("distance", String.format("%.3f", distance));
+		showScene("readWatch");
 	}
 
 	// help menu, describes all relevant commands
-	// not in the file due to the boolean logic
 	private void printHelp() {
-		System.out.println("Controls:");
-		System.out.println(" north : move your character north");
-		System.out.println(" east  : move your character east");
-		System.out.println(" south : move your character south");
-		System.out.println(" west  : move your character west");
-		System.out.println(" look  : observe the surroundings, this could help in a fix");
+		showScene("helpControls");
 		if (playerHasMap)
-			System.out.println(" map   : view the magical map");
-		System.out.println(" help  : bring up this help message");
-		System.out.println(" quit  : end the game");
-		System.out.println();
-		System.out.println(
-				"You can either type the word fully or partially (i.e. \"n\" for \"north\"), and case doesn't matter");
-		System.out.println();
+			showScene("helpMap");
+		showScene("helpOther");
 
 	}
 
@@ -215,32 +202,31 @@ public class BarrenMoor {
 		// each of these could be a scene
 		for (Monster monster : monsters) {
 			double distanceToMonster = player.getDistFromPeice(monster);
-			String direction = directionOfPiece(monster);
-
+			scenes.setVariable("direction", directionOfPiece(monster));
 			if (distanceToMonster <= 3) {
-				System.out.println("You can see a monster to the " + direction + "! Run!");
+				showScene("monsterNear");
+				;
 			} else if (distanceToMonster <= 7 && monster.isAsleep()) {
-				System.out.println("There is a prone figure to the " + direction + ", lets try to avoid it");
+				showScene("monsterMidSleep");
 			} else if (distanceToMonster <= 7) {
-				System.out.println("A shape is moving towards you from the " + direction + ", let's try to get away");
+				showScene("monsterMid");
 			} else if (distanceToMonster <= 10) {
 				// no need to check monster isAsleep, they wake when the player is < 5 distance
-				System.out.println("You can here noises coming from the " + direction + ", probably best to avoid");
+				showScene("monsterFar");
 			}
 		}
 
 		double distanceToTreasure = player.getDistFromPeice(treasure);
 
-		String direction = directionOfPiece(treasure);
-
+		scenes.setVariable("direction", directionOfPiece(treasure));
 		if (distanceToTreasure <= 2) {
-			System.out.println("You can almost see a box to the " + direction);
+			showScene("treasureClose");
 		} else if (distanceToTreasure <= 4) {
-			System.out.println("There is a strong light comming from the " + direction);
+			showScene("treasureMid");
 		} else if (distanceToTreasure <= 7) {
-			System.out.println("There is a faint glow to the " + direction);
+			showScene("treasureFar");
 		} else {
-			System.out.println("You are surrounded by dense fog");
+			showScene("farFromTreasure");
 		}
 
 	}
@@ -280,7 +266,7 @@ public class BarrenMoor {
 		switch (command) {
 
 		case EAST:
-			System.out.println("Heading East");
+			showScene("playerMoves-east");
 			if (!player.move(1, 0, this)) {
 				showScene("badMove");
 			}
@@ -291,7 +277,7 @@ public class BarrenMoor {
 			break;
 
 		case NORTH:
-			System.out.println("Heading North");
+			showScene("playerMoves-north");
 			if (!player.move(0, 1, this)) {
 				showScene("badMove");
 			}
@@ -299,20 +285,20 @@ public class BarrenMoor {
 
 		case QUIT:
 			if (quit()) {
-				System.out.println("Thanks for playing!");
+				showScene("playerQuits");
 				return false;
 			}
 			return true;
 
 		case SOUTH:
-			System.out.println("Heading South");
+			showScene("playerMoves-south");
 			if (!player.move(0, -1, this)) {
 				showScene("badMove");
 			}
 			break;
 
 		case WEST:
-			System.out.println("Heading West");
+			showScene("playerMoves-west");
 			if (!player.move(-1, 0, this)) {
 				showScene("badMove");
 			}
@@ -353,8 +339,8 @@ public class BarrenMoor {
 
 			if (monster.isAsleep() && player.getDistFromPeice(monster) <= 5) {
 				String direction = this.directionOfPiece(monster);
-				System.out.println(
-						"Suddenly, you hear a large growling noise followed by movement from the " + direction + "...");
+				scenes.setVariable("direction", direction);
+				showScene("wakeMonster");
 				monster.wake();
 			}
 			monster.moveToPlayer(player, this);
@@ -470,6 +456,7 @@ public class BarrenMoor {
 		return input.nextLine();
 	}
 
+	// uses the story file to show text descriptions of what is happening
 	private void showScene(String scene) {
 		ArrayList<String> lines = scenes.getScene(scene);
 

@@ -1,7 +1,6 @@
 This is the story for the Barren Moor
 Another file for alternative stories can be created, but the tags ":\w" must be identical
 if any are missing, the scenes are cut...
-indentation not needed btw
 
 :welcome
 	Welcome, player, to The Adventure of The Barren Moor!
@@ -16,7 +15,7 @@ indentation not needed btw
 	pause 2500
 	
 	You awaken to find yourself on a barren moor, called The Barren Moor
-	pause 500
+	pause 1000
 	You find you have the ability to look around, try it
 #end
 
@@ -62,6 +61,7 @@ indentation not needed btw
 #end
 
 :findMap
+
 	You notice a small piece of paper floating on the water...
 	You pick it up and discover it is a map of some kind
 	It must be enchanted, however, as one of the circles moves as you do...
@@ -74,3 +74,83 @@ indentation not needed btw
 	One does not simply walk out of the Barren Moor!
 #end
 
+:wakeMonster
+	Suddenly, you hear a large growling noise followed by movement from the %direction%...
+#end
+
+:playerQuits
+	Thanks for playing!
+#end
+
+:playerMoves
+	Player is Moving
+#end
+
+:playerMoves-east
+	Heading East
+#end
+:playerMoves-west
+	Heading West
+#end
+:playerMoves-north
+	Heading North
+#end
+:playerMoves-south
+	Heading South
+#end
+
+:monsterNear
+	You can see a monster to the %direction%! Run!
+#end
+
+:monsterMid
+	A shape is moving towards you from the %direction%, let's try to get away
+#end
+
+:monsterMidSleep
+	There is a prone figure to the %direction%, lets try to avoid it
+#end
+
+:monsterFar
+	You can here noises coming from the %direction%, probably best to avoid
+#end
+
+:treasureClose
+	You can almost see a box to the %direction%
+#end
+
+:treasureMid
+	There is a strong light coming from the %direction%
+#end
+
+:treasureFar
+	There is a faint glow to the %direction%
+#end
+
+:farFromTreasure
+	You are surrounded by dense fog
+#end
+
+:readWatch
+	The watch says %distance%
+#end
+
+Split in 3 as the map help isn't always shown
+:helpControls
+	Controls
+	north : move your character north
+	east  : move your character east
+	south : move your character south
+	west  : move your character west
+	look  : observe the surroundings, this could help in a fix
+#end
+:helpMap
+	map   : view the magical map
+#end
+:helpOther
+	help  : bring up this help message
+	quit  : end the game
+	
+	You can either type the word fully or partially (i.e. "n" for "north"), and case doesn't matter
+	
+#end

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item value="false" key="isRegEx"/>
-		<item value="moor" key="selection"/>
+		<item value="true" key="isRegEx"/>
+		<item value="pause 500" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="pauseForEffect\((\d+)\);"/>
+			<item value="System\.out\.println\(&quot;(.+)&quot;\);"/>
+			<item value="System.out.println(&quot;(.+)&quot;);"/>
 			<item value="map"/>
 			<item value="= null"/>
 			<item value="== null"/>
@@ -20,11 +23,10 @@
 			<item value="ets try to ge"/>
 			<item value="puase"/>
 			<item value="new Book"/>
-			<item value="fail"/>
-			<item value="assertEquals(null, "/>
-			<item value="assertNotEquals(null, "/>
 		</list>
 		<list key="replacehistory">
+			<item value="pause $1"/>
+			<item value="$1"/>
 			<item value="moor"/>
 			<item value="barrenMoor.getWidth()"/>
 			<item value="barrenMoor.getHeight()"/>
