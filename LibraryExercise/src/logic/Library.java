@@ -1,9 +1,17 @@
 package logic;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Library {
 	private ArrayList<Storable> objects;
+
+	private static int itemID = 0;
+	private static int userID = 0;
 
 	public Library() {
 		objects = new ArrayList<>();
@@ -85,7 +93,11 @@ public class Library {
 	}
 
 	public boolean addItem(Item item) {
-		return objects.add(item);
+		if (objects.add(item)) {
+			item.setID(itemID++);
+			return true;
+		}
+		return false;
 	}
 
 	public boolean removeItem(int id) {
@@ -101,6 +113,10 @@ public class Library {
 		}
 		if (i == objects.size())
 			return false;
+
+		if (item.isCheckedOut())
+			return false;
+
 		objects.remove(i);
 		return true;
 	}
@@ -132,11 +148,20 @@ public class Library {
 	// newspaper
 	public boolean updateItem(int index, String title, String author, int day, int month, int yearPublished,
 			int numberOfPages, int copies) {
+		for (Storable storable : objects) {
+			if (storable.getID() == index && storable instanceof Newspaper)
+				return storable.update(title, author, String.valueOf(day), String.valueOf(month),
+						String.valueOf(yearPublished), String.valueOf(numberOfPages), String.valueOf(copies));
+		}
 		return false;
 	}
 
 	public boolean registerUser(User person) {
-		return objects.add(person);
+		if (objects.add(person)) {
+			person.setID(userID++);
+			return true;
+		}
+		return false;
 	}
 
 	public boolean deleteUser(int index) {
@@ -182,6 +207,72 @@ public class Library {
 			}
 		}
 		return users;
+	}
+
+	public boolean toFile(String file) {
+		boolean worked = true;
+		BufferedWriter bwriter = null;
+
+		try {
+			bwriter = new BufferedWriter(new FileWriter(file));
+
+			for (Storable s : objects) {
+				bwriter.write(s.toFileFormat());
+				bwriter.newLine();
+			}
+
+		} catch (IOException e) {
+			worked = false;
+		} finally {
+			if (bwriter != null)
+				try {
+					bwriter.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		return worked;
+	}
+
+	// This needs to be static, creating a new Library from a file doesn't depend on
+	// another being created
+	// This can throw an exception, if something goes wrong, i.e. wrong format or
+	// file not found, the higher user NEEDS to know
+	public static Library fromFile(String file) throws IOException {
+		// TODO Auto-generated method stub
+		BufferedReader breader = null;
+		Library lib = null;
+		int line = 1;
+
+		try {
+			breader = new BufferedReader(new FileReader(file));
+
+			lib = new Library();
+
+			String input;
+
+			while ((input = breader.readLine()) != null) {
+				try {
+					Storable s = StringToStorable.parseToStorable(input);
+					lib.objects.add(s);
+				} catch (Exception e) {
+					throw new IOException("Error in parsing line " + line + "\n" + e.getMessage());
+				}
+
+				line++;
+			}
+
+		} catch (IOException ex) {
+			// re-throw exception
+			throw ex;
+		} finally { // the whole reason for the try-catch
+			if (breader != null) {
+				breader.close();
+			}
+		}
+
+		return lib;
 	}
 
 	/*

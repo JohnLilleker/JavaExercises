@@ -1,0 +1,4 @@
+book@22@A book@A human@Place@2070@3@true@2
+book@23@Another book@Another human@Place@2070@30@true@0
+book@24@And Another book@And Another human@Place@2070@300@true@2
+user@13@Subject@0@[22]

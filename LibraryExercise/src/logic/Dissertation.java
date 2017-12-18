@@ -1,7 +1,5 @@
 package logic;
 
-import java.util.regex.Pattern;
-
 public class Dissertation extends Item {
 	private String university;
 	private String course;
@@ -40,11 +38,11 @@ public class Dissertation extends Item {
 		if (params.length != 7)
 			return false;
 
-		if (!Pattern.matches("^\\d+$", params[2]))
+		if (!isNumber.matcher(params[2]).matches())
 			return false;
-		if (!Pattern.matches("^\\d+$", params[3]))
+		if (!isNumber.matcher(params[3]).matches())
 			return false;
-		if (!Pattern.matches("^\\d+$", params[6]))
+		if (!isNumber.matcher(params[6]).matches())
 			return false;
 
 		setTitle(params[0]);
@@ -56,5 +54,11 @@ public class Dissertation extends Item {
 		setStockLevel(Integer.parseInt(params[6]));
 
 		return true;
+	}
+
+	@Override
+	public String toFileFormat() {
+		return String.format("dissertation@%d@%s@%s@%d@%d@%s@%s@%d@%b", getID(), getTitle(), getAuthor(),
+				getYearPublished(), getNumberOfPages(), getUniversity(), getCourse(), getStockLevel(), isCheckedOut());
 	}
 }

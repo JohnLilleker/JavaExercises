@@ -1,7 +1,5 @@
 package logic;
 
-import java.util.regex.Pattern;
-
 public class Book extends Item {
 
 	private boolean isHardBack;
@@ -41,13 +39,13 @@ public class Book extends Item {
 		if (params.length != 7)
 			return false;
 
-		if (!Pattern.matches("^\\d+$", params[3]))
+		if (!isNumber.matcher(params[3]).matches())
 			return false;
-		if (!Pattern.matches("^\\d+$", params[4]))
+		if (!isNumber.matcher(params[4]).matches())
 			return false;
-		if (!Pattern.matches("true|false", params[5]))
+		if (!params[5].matches("true|false"))
 			return false;
-		if (!Pattern.matches("^\\d+$", params[6]))
+		if (!isNumber.matcher(params[6]).matches())
 			return false;
 
 		this.setTitle(params[0]);
@@ -55,10 +53,16 @@ public class Book extends Item {
 		this.setPublisher(params[2]);
 		this.setYearPublished(Integer.parseInt(params[3]));
 		this.setNumberOfPages(Integer.parseInt(params[4]));
-		this.setHardBack(params[5].equals("true"));
+		this.setHardBack(params[5].equalsIgnoreCase("true"));
 		this.setStockLevel(Integer.parseInt(params[6]));
 
 		return true;
+	}
+
+	@Override
+	public String toFileFormat() {
+		return String.format("book@%d@%s@%s@%s@%d@%d@%b@%d", getID(), getTitle(), getAuthor(), getPublisher(),
+				getYearPublished(), getNumberOfPages(), isHardBack(), getStockLevel(), isCheckedOut());
 	}
 
 }

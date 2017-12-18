@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item value="true" key="isRegEx"/>
-		<item value="look  : observe the surroundings, this could help in a fix" key="selection"/>
+		<item value="false" key="isRegEx"/>
+		<item value="@%" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value=" %"/>
+			<item value=" "/>
+			<item value="on %s %s %d %d %s %s %"/>
+			<item value="\t.*"/>
+			<item value="/t"/>
+			<item value="/t.*"/>
 			<item value="System\.out\.println\(&quot; (.+)&quot;\);"/>
 			<item value="System.out.println(&quot;Controls:&quot;);"/>
 			<item value="help"/>
@@ -17,14 +23,11 @@
 			<item value="System\.out\.println\(&quot;(.+)&quot;\);"/>
 			<item value="System.out.println(&quot;(.+)&quot;);"/>
 			<item value="map"/>
-			<item value="= null"/>
-			<item value="== null"/>
-			<item value="he watch sa"/>
-			<item value="BarrenMoor.MOOR_WIDTH"/>
-			<item value="BarrenMoor.MOOR_HEIGHT"/>
-			<item value="piece of paper floting"/>
 		</list>
 		<list key="replacehistory">
+			<item value="@%"/>
+			<item value="|"/>
+			<item value=""/>
 			<item value="$1"/>
 			<item value="pause $1"/>
 			<item value="moor"/>

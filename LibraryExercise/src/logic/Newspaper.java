@@ -29,6 +29,35 @@ public class Newspaper extends Item {
 
 	@Override
 	public boolean update(String... params) {
-		return false;
+
+		if (params.length != 7)
+			return false;
+
+		if (!isNumber.matcher(params[2]).matches())
+			return false;
+		if (!isNumber.matcher(params[3]).matches())
+			return false;
+		if (!isNumber.matcher(params[4]).matches())
+			return false;
+		if (!isNumber.matcher(params[5]).matches())
+			return false;
+		if (!isNumber.matcher(params[6]).matches())
+			return false;
+
+		setTitle(params[0]);
+		setAuthor(params[1]);
+		setDay(Integer.parseInt(params[2]));
+		setMonth(Integer.parseInt(params[3]));
+		setYearPublished(Integer.parseInt(params[4]));
+		setNumberOfPages(Integer.parseInt(params[5]));
+		setStockLevel(Integer.parseInt(params[6]));
+
+		return true;
+	}
+
+	@Override
+	public String toFileFormat() {
+		return String.format("newspaper@%d@%s@%s@%d@%d@%d@%d@%d", getID(), getTitle(), getAuthor(), getDay(),
+				getMonth(), getYearPublished(), getNumberOfPages(), getStockLevel(), isCheckedOut());
 	}
 }

@@ -1,8 +1,15 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -75,14 +82,15 @@ public class LibraryTest {
 		Item i1 = new Book("A book", "A human", "Place", 2070, 3, true, 3),
 				i2 = new Book("Another book", "Another human", "Place", 2070, 30, true, 0),
 				i3 = new Book("And Another book", "And Another human", "Place", 2070, 300, true, 2);
-		// already has i2 and an i3
-		u.addItem(i2.getID());
-		u.addItem(i3.getID());
 
 		library.addItem(i1);
 		library.addItem(i2);
 		library.addItem(i3);
 		library.registerUser(u);
+
+		// already has i2 and an i3
+		u.addItem(i2.getID());
+		u.addItem(i3.getID());
 
 		// successful transaction
 		assertTrue(library.checkIn(i2.getID(), u.getID()));
@@ -135,7 +143,7 @@ public class LibraryTest {
 	public void testUpdateItem() {
 		// TODO
 		Book book = new Book("A book", "A human", "Place", 2070, 3, true, 3);
-		Newspaper news = new Newspaper("The day", "editor", 32, 2, 19010, -17, 4);
+		Newspaper news = new Newspaper("The day", "editor", 32, 2, 19010, 17, 4);
 		Dissertation diss = new Dissertation("I did work", "A. Student", 90, 5, "University", "Principles of Stuff", 2);
 
 		library.addItem(book);
@@ -145,7 +153,7 @@ public class LibraryTest {
 		assertTrue("Expected correct update",
 				library.updateItem(book.getID(), "Book", book.getAuthor(), book.getPublisher(), 2015, 90, true, 5));
 		assertTrue("Expected correct update", library.updateItem(news.getID(), "The Evening", news.getAuthor(), 12, 2,
-				2014, -30, news.getStockLevel()));
+				2014, 30, news.getStockLevel()));
 
 		// only change year and stock
 		assertTrue("Expected correct update", library.updateItem(diss.getID(), diss.getTitle(), diss.getAuthor(), 2017,
@@ -157,15 +165,15 @@ public class LibraryTest {
 
 		assertEquals("The Evening", news.getTitle());
 		assertEquals("editor", news.getAuthor());
-		assertEquals(-30, news.getNumberOfPages());
+		assertEquals(30, news.getNumberOfPages());
 
 		assertEquals("I did work", diss.getTitle());
-		assertEquals(2014, diss.getYearPublished());
+		assertEquals(2017, diss.getYearPublished());
 		assertEquals(5, diss.getStockLevel());
 
 		// using wrong update on something...
 		// the overload is expecting a newspaper
-		assertFalse("Expected bad update", library.updateItem(book.getID(), null, null, -1, 13, -19732, 958, -4));
+		assertFalse("Expected bad update", library.updateItem(book.getID(), null, null, 1, 13, 19732, 958, 4));
 
 		assertEquals("Book", book.getTitle());
 		assertEquals("A human", book.getAuthor());
@@ -249,8 +257,39 @@ public class LibraryTest {
 
 	@Test
 	public void testFileIO() {
-		// TODO
-		fail("Not yet implemented");
+
+		User u = new User("Subject", 0);
+
+		Item i1 = new Book("A book", "A human", "Place", 2070, 3, true, 3),
+				i2 = new Book("Another book", "Another human", "Place", 2070, 30, true, 0),
+				i3 = new Book("And Another book", "And Another human", "Place", 2070, 300, true, 2);
+
+		library.addItem(i1);
+		library.addItem(i2);
+		library.addItem(i3);
+		library.registerUser(u);
+
+		// test the check out thing
+		library.checkOut(i1.getID(), u.getID());
+
+		assertTrue(library.toFile("lib.txt"));
+
+		Library libraryRecovered = null;
+		try {
+			libraryRecovered = Library.fromFile("lib.txt");
+		} catch (IOException e) {
+			fail("Shouldn't have caused an exception, but did\n" + e.toString());
+		}
+
+		assertNotNull(libraryRecovered);
+
+		ArrayList<Item> items = new ArrayList<Item>(Arrays.asList(i1, i2, i3));
+
+		ArrayList<User> users = new ArrayList<User>(Arrays.asList(u));
+
+		assertEquals(items, libraryRecovered.getAllItems());
+		assertEquals(users, libraryRecovered.getAllUsers());
+
 	}
 
 }

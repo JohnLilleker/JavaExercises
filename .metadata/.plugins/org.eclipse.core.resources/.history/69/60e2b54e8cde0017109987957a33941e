@@ -1,9 +1,0 @@
-
-public class Car extends Vehicle {
-
-	public Car(int wheels, int length, int weight) {
-		super(wheels, length, weight);
-		// TODO Auto-generated constructor stub
-	}
-
-}

@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.regex.Pattern;
+
 public abstract class Item implements Storable {
 	private String title;
 	private int yearPublished;
@@ -10,7 +12,6 @@ public abstract class Item implements Storable {
 	private int stockLevel;
 
 	private boolean isCheckedOut = false;
-	private static int bookID = 0;
 
 	public Item(String title, String author, int yearPublished, int numberOfPages, int stockLevel) {
 		super();
@@ -19,8 +20,7 @@ public abstract class Item implements Storable {
 		this.yearPublished = yearPublished;
 		this.numberOfPages = numberOfPages;
 		this.stockLevel = stockLevel;
-		id = bookID;
-		bookID++;
+		id = -1;
 
 	}
 
@@ -52,6 +52,10 @@ public abstract class Item implements Storable {
 		return id;
 	}
 
+	public void setID(int id) {
+		this.id = id;
+	}
+
 	public int getStockLevel() {
 		return stockLevel;
 	}
@@ -75,5 +79,12 @@ public abstract class Item implements Storable {
 	public void checkOut(boolean isCheckedOut) {
 		this.isCheckedOut = isCheckedOut;
 	}
+
+	// in update, the values are given as strings. This helps prevent "dog" being
+	// given to parseInt()
+	//
+	// Read as "at the start of the String, find 1 or more numbers, then the end of
+	// the String"
+	protected static final Pattern isNumber = Pattern.compile("^\\d+$");
 
 }

@@ -6,11 +6,8 @@ public class User implements Storable {
 	private String name;
 	private int id;
 	// items the user has. Store ids as no real need to give objects I feel
-	// also gives it a bit more of a database feel and helps when writing to file
 	private ArrayList<Integer> items;
 	private int age;
-
-	private static int userID = 0;
 
 	public User(String name, int age) {
 		super();
@@ -18,8 +15,7 @@ public class User implements Storable {
 		this.age = age;
 		items = new ArrayList<>();
 
-		id = userID;
-		userID++;
+		id = -1;
 	}
 
 	public String getName() {
@@ -65,6 +61,10 @@ public class User implements Storable {
 		return id;
 	}
 
+	public void setID(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public boolean update(String... params) {
 
@@ -80,5 +80,10 @@ public class User implements Storable {
 		this.setAge(Integer.parseInt(params[1]));
 		return true;
 
+	}
+
+	@Override
+	public String toFileFormat() {
+		return String.format("user@%d@%s@%d@%s", getID(), getName(), getAge(), items.toString());
 	}
 }
