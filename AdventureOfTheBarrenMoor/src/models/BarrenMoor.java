@@ -204,15 +204,15 @@ public class BarrenMoor {
 			double distanceToMonster = player.getDistFromPeice(monster);
 			scenes.setVariable("direction", directionOfPiece(monster));
 			if (distanceToMonster <= 3) {
-				showScene("monsterNear");
+				showScene("describe-monster-near");
 				;
 			} else if (distanceToMonster <= 7 && monster.isAsleep()) {
-				showScene("monsterMidSleep");
+				showScene("describe-monster-mid-sleep");
 			} else if (distanceToMonster <= 7) {
-				showScene("monsterMid");
+				showScene("describe-monster-mid");
 			} else if (distanceToMonster <= 10) {
 				// no need to check monster isAsleep, they wake when the player is < 5 distance
-				showScene("monsterFar");
+				showScene("describe-monster-far");
 			}
 		}
 
@@ -220,13 +220,13 @@ public class BarrenMoor {
 
 		scenes.setVariable("direction", directionOfPiece(treasure));
 		if (distanceToTreasure <= 2) {
-			showScene("treasureClose");
+			showScene("describe-treasure-close");
 		} else if (distanceToTreasure <= 4) {
-			showScene("treasureMid");
+			showScene("describe-treasure-mid");
 		} else if (distanceToTreasure <= 7) {
-			showScene("treasureFar");
+			showScene("describe-treasure-far");
 		} else {
-			showScene("farFromTreasure");
+			showScene("describe-treasure");
 		}
 
 	}
@@ -434,14 +434,12 @@ public class BarrenMoor {
 	private boolean gameover() {
 		if (player.onTopOf(treasure)) {
 			showScene("endGame-treasure");
-			;
 			return true;
 		}
 
 		for (Monster monster : monsters) {
 			if (monster.onTopOf(player)) {
 				showScene("endGame-death");
-				;
 				return true;
 			}
 		}

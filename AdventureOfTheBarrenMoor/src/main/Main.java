@@ -1,6 +1,6 @@
 package main;
 
-import models.*;
+import models.BarrenMoor;
 
 public class Main {
 

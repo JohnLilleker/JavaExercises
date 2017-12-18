@@ -82,57 +82,56 @@ if any are missing, the scenes are cut...
 	Thanks for playing!
 #end
 
-:playerMoves
-	Player is Moving
-#end
-
 :playerMoves-east
 	Heading East
 #end
+
 :playerMoves-west
 	Heading West
 #end
+
 :playerMoves-north
 	Heading North
 #end
+
 :playerMoves-south
 	Heading South
 #end
 
-:monsterNear
+:describe-monster-near
 	You can see a monster to the %direction%! Run!
 #end
 
-:monsterMid
+:describe-monster-mid
 	A shape is moving towards you from the %direction%, let's try to get away
 #end
 
-:monsterMidSleep
+:describe-monster-mid-sleep
 	There is a prone figure to the %direction%, lets try to avoid it
 #end
 
-:monsterFar
+:describe-monster-far
 	You can here noises coming from the %direction%, probably best to avoid
 #end
 
-:treasureClose
+:describe-treasure-close
 	You can almost see a box to the %direction%
 #end
 
-:treasureMid
+:describe-treasure-mid
 	There is a strong light coming from the %direction%
 #end
 
-:treasureFar
+:describe-treasure-far
 	There is a faint glow to the %direction%
 #end
 
-:farFromTreasure
+:describe-treasure
 	You are surrounded by dense fog
 #end
 
 :readWatch
-	The watch says %distance%
+	The watch says %distance%m
 #end
 
 Split in 3 as the map help isn't always shown
@@ -144,9 +143,11 @@ Split in 3 as the map help isn't always shown
 	west  : move your character west
 	look  : observe the surroundings, this could help in a fix
 #end
+
 :helpMap
 	map   : view the magical map
 #end
+
 :helpOther
 	help  : bring up this help message
 	quit  : end the game

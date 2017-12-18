@@ -64,4 +64,21 @@ public class User implements Storable {
 	public int getID() {
 		return id;
 	}
+
+	@Override
+	public boolean update(String... params) {
+
+		// not enough parameters
+		if (params.length != 2)
+			return false;
+
+		// second parameter must be a number
+		if (!params[1].matches("^\\d+$"))
+			return false;
+
+		this.setName(params[0]);
+		this.setAge(Integer.parseInt(params[1]));
+		return true;
+
+	}
 }

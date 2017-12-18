@@ -108,18 +108,30 @@ public class Library {
 	// book
 	public boolean updateItem(int index, String title, String author, String publisher, int yearPublished,
 			int numberOfPages, boolean isHardBack, int copies) {
+
+		for (Storable storable : objects) {
+			if (storable.getID() == index && storable instanceof Book)
+				return storable.update(title, author, publisher, String.valueOf(yearPublished),
+						String.valueOf(numberOfPages), String.valueOf(isHardBack), String.valueOf(copies));
+		}
+
 		return false;
 	}
 
 	// dissertation
 	public boolean updateItem(int index, String title, String author, int yearPublished, int numberOfPages,
 			String university, String course, int copies) {
+		for (Storable storable : objects) {
+			if (storable.getID() == index && storable instanceof Dissertation)
+				return storable.update(title, author, String.valueOf(yearPublished), String.valueOf(numberOfPages),
+						university, course, String.valueOf(copies));
+		}
 		return false;
 	}
 
 	// newspaper
 	public boolean updateItem(int index, String title, String author, int day, int month, int yearPublished,
-			int numberOfPages, boolean isTabloid, int copies) {
+			int numberOfPages, int copies) {
 		return false;
 	}
 
@@ -140,6 +152,13 @@ public class Library {
 	}
 
 	public boolean updateUser(int index, String name, int age) {
+
+		for (Storable storable : objects) {
+			if (storable.getID() == index && storable instanceof User) {
+				return storable.update(name, String.valueOf(age));
+			}
+		}
+
 		return false;
 	}
 

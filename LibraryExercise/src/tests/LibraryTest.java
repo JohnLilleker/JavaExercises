@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import logic.Book;
+import logic.Dissertation;
 import logic.Item;
 import logic.Library;
 import logic.Newspaper;
@@ -133,7 +134,43 @@ public class LibraryTest {
 	@Test
 	public void testUpdateItem() {
 		// TODO
-		fail("Not yet implemented");
+		Book book = new Book("A book", "A human", "Place", 2070, 3, true, 3);
+		Newspaper news = new Newspaper("The day", "editor", 32, 2, 19010, -17, 4);
+		Dissertation diss = new Dissertation("I did work", "A. Student", 90, 5, "University", "Principles of Stuff", 2);
+
+		library.addItem(book);
+		library.addItem(news);
+		library.addItem(diss);
+
+		assertTrue("Expected correct update",
+				library.updateItem(book.getID(), "Book", book.getAuthor(), book.getPublisher(), 2015, 90, true, 5));
+		assertTrue("Expected correct update", library.updateItem(news.getID(), "The Evening", news.getAuthor(), 12, 2,
+				2014, -30, news.getStockLevel()));
+
+		// only change year and stock
+		assertTrue("Expected correct update", library.updateItem(diss.getID(), diss.getTitle(), diss.getAuthor(), 2017,
+				diss.getNumberOfPages(), diss.getUniversity(), diss.getCourse(), 5));
+
+		assertEquals("Book", book.getTitle());
+		assertEquals("A human", book.getAuthor());
+		assertEquals(2015, book.getYearPublished());
+
+		assertEquals("The Evening", news.getTitle());
+		assertEquals("editor", news.getAuthor());
+		assertEquals(-30, news.getNumberOfPages());
+
+		assertEquals("I did work", diss.getTitle());
+		assertEquals(2014, diss.getYearPublished());
+		assertEquals(5, diss.getStockLevel());
+
+		// using wrong update on something...
+		// the overload is expecting a newspaper
+		assertFalse("Expected bad update", library.updateItem(book.getID(), null, null, -1, 13, -19732, 958, -4));
+
+		assertEquals("Book", book.getTitle());
+		assertEquals("A human", book.getAuthor());
+		assertEquals(2015, book.getYearPublished());
+
 	}
 
 	@Test
@@ -193,8 +230,21 @@ public class LibraryTest {
 
 	@Test
 	public void testUpdatePerson() {
-		// TODO
-		fail("Not yet implemented");
+
+		User u1 = new User("Person One", 9);
+		User u2 = new User("Person Two", 6);
+
+		library.registerUser(u1);
+		library.registerUser(u2);
+
+		assertTrue(library.updateUser(u1.getID(), "Bob", 26));
+
+		assertEquals("Bob", u1.getName());
+		assertEquals(26, u1.getAge());
+
+		assertEquals("Person Two", u2.getName());
+		assertEquals(6, u2.getAge());
+
 	}
 
 	@Test

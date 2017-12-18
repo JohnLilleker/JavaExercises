@@ -26,4 +26,9 @@ public class Newspaper extends Item {
 	public void setMonth(int month) {
 		this.month = month;
 	}
+
+	@Override
+	public boolean update(String... params) {
+		return false;
+	}
 }

@@ -1,78 +1,83 @@
-An empty story for barren moor, the tags can be filled as you please
-Just change the constructor in main to "BarrenMoor2.txt" 
 
 :welcome
+	Hi, what's your name?
 #end
 
 :intro1
+	Welcome to the Barren Moor %name%!
+	Try "look"
 #end
 
 :intro2
+	You can see absolutely nothing but your feet
+	You are free to move as you will
+	Type "help" if you're a n00b
 #end
 
 :endGame-treasure
+	You found the treasure, yay!
+	Game over, you win!
+	Now how to get out...
 #end
 
 :endGame-death
+	You got eaten by a monster... :(
+	Game over, you lose!
 #end
 
 :findMap
+	You found a map!
+	Type "map"!
 #end
 
 :badMove
+	Thou shall not leave this Moor!
 #end
 
 :wakeMonster
+	A monster is chasing you!
+	What fun!
 #end
 
 :playerQuits
+	Bye bye, quitter...
+#end
+
+:playerMoves-east
+	Going Right
+#end
+:playerMoves-west
+	Going Left
+#end
+:playerMoves-north
+	going Up
+#end
+:playerMoves-south
+	Going down
+#end
+
+:describe
+	You can't see anything!
+#end
+
+
+:readWatch
+	You have a feeling about the number %distance%
 #end
 
 :helpControls
+	north = up
+	east  = left
+	south = down
+	west  = right
+	look  = ...
 #end
+
 :helpMap
+	map   = map
 #end
+
 :helpOther
-#end
-
-
-:playerMoves
-#end
-
-if any of the below are removed, the above will be returned instead
-
-:playerMoves-east
-#end
-:playerMoves-west
-#end
-:playerMoves-north
-#end
-:playerMoves-south
-#end
-
-:monsterNear
-#end
-
-:monsterMid
-#end
-
-:monsterMidSleep
-#end
-
-:monsterFar
-#end
-
-:treasureClose
-#end
-
-:treasureMid
-#end
-
-:treasureFar
-#end
-
-:farFromTreasure
-#end
-
-:readWatch
+	help  = this
+	quit  = loser
 #end

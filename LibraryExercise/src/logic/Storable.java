@@ -4,5 +4,7 @@ public interface Storable {
 
 	int getID();
 
-	// String toFileFormat();
+	// updates the attributes of the storable
+	boolean update(String... params);
+
 }
