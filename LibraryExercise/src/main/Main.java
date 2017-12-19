@@ -1,16 +1,19 @@
 package main;
 
+import java.io.IOException;
+
+import logic.*;
+
 public class Main {
 	public static void main(String[] args) {
-		arrayArgs(new String[] { "hello", "world" });
-		vargs("hello", "world");
-	}
 
-	public static void arrayArgs(String[] strs) {
-
-	}
-
-	public static void vargs(String... strs) {
+		try {
+			Library.fromFile("lib.txt");
+			System.out.println("happy");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

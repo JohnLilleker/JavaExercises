@@ -58,7 +58,7 @@ public class Dissertation extends Item {
 
 	@Override
 	public String toFileFormat() {
-		return String.format("dissertation@%d@%s@%s@%d@%d@%s@%s@%d@%b", getID(), getTitle(), getAuthor(),
-				getYearPublished(), getNumberOfPages(), getUniversity(), getCourse(), getStockLevel(), isCheckedOut());
+		return String.format("dissertation@%d@%s@%s@%d@%d@%s@%s@%d", getID(), getTitle(), getAuthor(),
+				getYearPublished(), getNumberOfPages(), getUniversity(), getCourse(), getStockLevel());
 	}
 }

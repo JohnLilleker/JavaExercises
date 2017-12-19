@@ -58,6 +58,6 @@ public class Newspaper extends Item {
 	@Override
 	public String toFileFormat() {
 		return String.format("newspaper@%d@%s@%s@%d@%d@%d@%d@%d", getID(), getTitle(), getAuthor(), getDay(),
-				getMonth(), getYearPublished(), getNumberOfPages(), getStockLevel(), isCheckedOut());
+				getMonth(), getYearPublished(), getNumberOfPages(), getStockLevel());
 	}
 }

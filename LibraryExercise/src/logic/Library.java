@@ -10,9 +10,6 @@ import java.util.ArrayList;
 public class Library {
 	private ArrayList<Storable> objects;
 
-	private static int itemID = 0;
-	private static int userID = 0;
-
 	public Library() {
 		objects = new ArrayList<>();
 	}
@@ -94,7 +91,6 @@ public class Library {
 
 	public boolean addItem(Item item) {
 		if (objects.add(item)) {
-			item.setID(itemID++);
 			return true;
 		}
 		return false;
@@ -112,9 +108,6 @@ public class Library {
 				break;
 		}
 		if (i == objects.size())
-			return false;
-
-		if (item.isCheckedOut())
 			return false;
 
 		objects.remove(i);
@@ -158,7 +151,6 @@ public class Library {
 
 	public boolean registerUser(User person) {
 		if (objects.add(person)) {
-			person.setID(userID++);
 			return true;
 		}
 		return false;
@@ -228,7 +220,6 @@ public class Library {
 				try {
 					bwriter.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		}
@@ -254,6 +245,7 @@ public class Library {
 
 			while ((input = breader.readLine()) != null) {
 				try {
+
 					Storable s = StringToStorable.parseToStorable(input);
 					lib.objects.add(s);
 				} catch (Exception e) {
@@ -268,14 +260,11 @@ public class Library {
 			throw ex;
 		} finally { // the whole reason for the try-catch
 			if (breader != null) {
+				System.out.println("in finally");
 				breader.close();
 			}
 		}
 
 		return lib;
 	}
-
-	/*
-	 * file io
-	 */
 }

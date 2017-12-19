@@ -11,7 +11,7 @@ public abstract class Item implements Storable {
 	// stock level
 	private int stockLevel;
 
-	private boolean isCheckedOut = false;
+	private static int itemID = 0;
 
 	public Item(String title, String author, int yearPublished, int numberOfPages, int stockLevel) {
 		super();
@@ -20,7 +20,7 @@ public abstract class Item implements Storable {
 		this.yearPublished = yearPublished;
 		this.numberOfPages = numberOfPages;
 		this.stockLevel = stockLevel;
-		id = -1;
+		id = itemID++;
 
 	}
 
@@ -54,6 +54,8 @@ public abstract class Item implements Storable {
 
 	public void setID(int id) {
 		this.id = id;
+		if (id >= itemID)
+			itemID = id + 1;
 	}
 
 	public int getStockLevel() {
@@ -70,14 +72,6 @@ public abstract class Item implements Storable {
 
 	public void setAuthor(String author) {
 		this.author = author;
-	}
-
-	public boolean isCheckedOut() {
-		return isCheckedOut;
-	}
-
-	public void checkOut(boolean isCheckedOut) {
-		this.isCheckedOut = isCheckedOut;
 	}
 
 	// in update, the values are given as strings. This helps prevent "dog" being

@@ -9,13 +9,15 @@ public class User implements Storable {
 	private ArrayList<Integer> items;
 	private int age;
 
+	private static int userID = 0;
+
 	public User(String name, int age) {
 		super();
 		this.name = name;
 		this.age = age;
 		items = new ArrayList<>();
 
-		id = -1;
+		id = userID++;
 	}
 
 	public String getName() {
@@ -63,6 +65,8 @@ public class User implements Storable {
 
 	public void setID(int id) {
 		this.id = id;
+		if (id >= userID)
+			userID = id + 1;
 	}
 
 	@Override

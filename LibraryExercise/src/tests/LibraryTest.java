@@ -278,17 +278,25 @@ public class LibraryTest {
 		try {
 			libraryRecovered = Library.fromFile("lib.txt");
 		} catch (IOException e) {
-			fail("Shouldn't have caused an exception, but did\n" + e.toString());
+			fail("Shouldn't have caused an exception, but did.\n" + e.toString());
 		}
 
 		assertNotNull(libraryRecovered);
 
-		ArrayList<Item> items = new ArrayList<Item>(Arrays.asList(i1, i2, i3));
+		for (Item item : Arrays.asList(i1, i2, i3)) {
+			Item readIn = libraryRecovered.getItemByID(item.getID());
+			assertNotNull(readIn);
+			assertEquals(item.getTitle(), readIn.getTitle());
+			assertEquals(item.getAuthor(), readIn.getAuthor());
+			assertEquals(item.getYearPublished(), readIn.getYearPublished());
+			assertEquals(item.getStockLevel(), readIn.getStockLevel());
+		}
 
-		ArrayList<User> users = new ArrayList<User>(Arrays.asList(u));
-
-		assertEquals(items, libraryRecovered.getAllItems());
-		assertEquals(users, libraryRecovered.getAllUsers());
+		User recovered = libraryRecovered.getUserByID(u.getID());
+		assertNotNull(recovered);
+		assertEquals(u.getName(), recovered.getName());
+		assertEquals(u.getAge(), recovered.getAge());
+		assertEquals(u.getCurrentItems(), recovered.getCurrentItems());
 
 	}
 

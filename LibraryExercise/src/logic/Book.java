@@ -62,7 +62,7 @@ public class Book extends Item {
 	@Override
 	public String toFileFormat() {
 		return String.format("book@%d@%s@%s@%s@%d@%d@%b@%d", getID(), getTitle(), getAuthor(), getPublisher(),
-				getYearPublished(), getNumberOfPages(), isHardBack(), getStockLevel(), isCheckedOut());
+				getYearPublished(), getNumberOfPages(), isHardBack(), getStockLevel());
 	}
 
 }
