@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="@%" key="selection"/>
+		<item value="news" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="diss"/>
 			<item value=" %"/>
 			<item value=" "/>
 			<item value="on %s %s %d %d %s %s %"/>
@@ -22,9 +23,9 @@
 			<item value="pauseForEffect\((\d+)\);"/>
 			<item value="System\.out\.println\(&quot;(.+)&quot;\);"/>
 			<item value="System.out.println(&quot;(.+)&quot;);"/>
-			<item value="map"/>
 		</list>
 		<list key="replacehistory">
+			<item value="news"/>
 			<item value="@%"/>
 			<item value="|"/>
 			<item value=""/>

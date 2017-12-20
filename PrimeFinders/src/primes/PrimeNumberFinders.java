@@ -58,6 +58,4 @@ public class PrimeNumberFinders {
 		return primes;
 	}
 
-	public void jh() {
-	}
 }
