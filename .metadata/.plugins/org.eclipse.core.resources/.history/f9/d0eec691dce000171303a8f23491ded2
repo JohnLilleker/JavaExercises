@@ -1,5 +1,0 @@
-package logic;
-
-public abstract class Item implements Storable {
-
-}

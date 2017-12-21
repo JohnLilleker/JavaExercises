@@ -2,12 +2,17 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="news" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="65"/>
+			<item value="&#x09;public void setBoard() {"/>
+			<item value="X_AX"/>
+			<item value="(\w)"/>
+			<item value="ABCDEFGHIJKL"/>
 			<item value="diss"/>
 			<item value=" %"/>
 			<item value=" "/>
@@ -18,17 +23,13 @@
 			<item value="System\.out\.println\(&quot; (.+)&quot;\);"/>
 			<item value="System.out.println(&quot;Controls:&quot;);"/>
 			<item value="help"/>
-			<item value="ln(&quot;"/>
-			<item value="system"/>
-			<item value="pauseForEffect\((\d+)\);"/>
-			<item value="System\.out\.println\(&quot;(.+)&quot;\);"/>
-			<item value="System.out.println(&quot;(.+)&quot;);"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
+			<item value="&quot;$1&quot;, "/>
 			<item value="news"/>
 			<item value="@%"/>
 			<item value="|"/>
-			<item value=""/>
 			<item value="$1"/>
 			<item value="pause $1"/>
 			<item value="moor"/>

@@ -26,4 +26,12 @@ public class Ship {
 	public void hit() {
 		lives--;
 	}
+
+	public void fix() {
+		lives = length;
+	}
+
+	public int getLives() {
+		return lives;
+	}
 }

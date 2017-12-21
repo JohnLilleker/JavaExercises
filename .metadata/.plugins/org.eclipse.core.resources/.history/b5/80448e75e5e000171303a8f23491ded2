@@ -1,6 +1,0 @@
-package logic;
-
-public class Dissertation extends Item {
-	private String university;
-	private String course;
-}

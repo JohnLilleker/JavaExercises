@@ -18,8 +18,8 @@ public abstract class Player {
 		return board;
 	}
 
-	public int callHit(int x, int y) {
-		return board.hitCell(x, y);
+	public int callHit(int[] m) {
+		return board.hitCell(m[0], m[1]);
 	}
 
 	public abstract void setBoard();
@@ -36,5 +36,10 @@ public abstract class Player {
 
 	protected void setGameReady(boolean ready) {
 		gameReady = ready;
+	}
+
+	public void resetBoard() {
+		board.reset();
+		setGameReady(false);
 	}
 }

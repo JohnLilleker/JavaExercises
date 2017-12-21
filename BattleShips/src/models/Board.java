@@ -4,16 +4,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board {
-	public static final int GRID_SIZE = 12;
 
 	// constants
-	public static final int DEAD = 3;
-	public static final int HIT = 2;
-	public static final int MISS = 1;
-	public static final int EMPTY = 0;
-	public static final int ERROR = -1;
 
-	private final static String[] X_AXIS = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
+	// size of grid
+	public static final int GRID_SIZE = 12;
+
+	// ship destroyed
+	public static final int DEAD = 3;
+	// ship hit (red peg) and returned if ship not dead
+	public static final int HIT = 2;
+	// missed hit (white peg)
+	public static final int MISS = 1;
+	// nothing in this cell
+	public static final int EMPTY = 0;
+	// Error
+	public static final int ERROR = -1;
 
 	private int[][] grid;
 
@@ -29,6 +35,10 @@ public class Board {
 		// 6 = destroyer
 		// 7 = carrier
 
+		// sort the ships in descending size order
+		// this will help with placement as the smaller ships are easier to fit
+		fleet.sort((Ship s1, Ship s2) -> Integer.compare(s2.getLength(), s1.getLength()));
+
 	}
 
 	public boolean isDead() {
@@ -39,7 +49,16 @@ public class Board {
 		return fleet;
 	}
 
-	public void showBoard(boolean showShips) {
+	/**
+	 * Prints a representation of the board
+	 * 
+	 * @param showShips
+	 *            Option to show ships, they won't be shown if false
+	 * @param showFleetHealth
+	 *            Toggle for an additional piece of information at the bottom of the
+	 *            board describing the number of ships left and their 'health'
+	 */
+	public void showBoard(boolean showShips, boolean showFleetHealth) {
 
 		int lineSize = 4 + GRID_SIZE * 2;
 		for (int i = 0; i < lineSize; i++)
@@ -75,11 +94,67 @@ public class Board {
 		}
 		System.out.print("   |");
 		for (int i = 0; i < GRID_SIZE; i++)
-			System.out.printf("%s|", X_AXIS[i]);
+			System.out.printf("%c|", 'A' + i);
 
-		System.out.println();
+		System.out.println("\n");
+
+		if (showFleetHealth) {
+			// show the ships
+			for (Ship boat : fleet) {
+				String name = "Boat";
+				switch (boat.getID()) {
+				case '1':
+				case '2':
+					// patrol boat
+					name = "Patrol boat";
+					break;
+				case '3':
+				case '4':
+					// 'battleship'
+					name = "Destroyer";
+					break;
+				case '5':
+					// submarine
+					name = "Submarine";
+					break;
+				case '6':
+					// 'destroyer'
+					name = "Battleship";
+					break;
+				case '7':
+					// carrier
+					name = "Carrier";
+					break;
+				}
+				String health = "";
+				for (int i = 0; i < boat.getLength(); i++) {
+					if (i < boat.getLives())
+						health += "=";
+					else
+						health += "X";
+				}
+				System.out.println(name + ": " + health);
+			}
+		}
+
 	}
 
+	/**
+	 * Attempts to place a ship on the board
+	 * 
+	 * @param ship
+	 *            The ship object
+	 * @param x
+	 *            location of one end
+	 * @param y
+	 *            location of one end
+	 * @param dx
+	 *            the direction of the rest of the ship from the initial location
+	 * @param dy
+	 *            the direction of the rest of the ship from the initial location
+	 * @return true if the ship has been placed correctly. If the ship overlaps
+	 *         anything or leaves the grid this returns false
+	 */
 	public boolean placeShip(Ship ship, int x, int y, int dx, int dy) {
 
 		for (int i = 0; i < ship.getLength(); i++) {
@@ -98,30 +173,102 @@ public class Board {
 		return true;
 	}
 
+	/**
+	 * Looks up the int stored in a particular cell
+	 * 
+	 * @param x
+	 *            x coordinate
+	 * @param y
+	 *            y coordinate
+	 * @return the number stored or Board.ERROR if out of range
+	 */
 	public int getStatus(int x, int y) {
 		if (outOfRange(x, y))
 			return ERROR;
 		return grid[y][x];
 	}
 
+	/**
+	 * A check for invalid coordinates
+	 * 
+	 * @param x
+	 *            An x coordinate
+	 * @param y
+	 *            A y coordinate
+	 * @return true if the coordinates given are out of the grid
+	 */
 	public boolean outOfRange(int x, int y) {
 		return (x < 0 || x >= GRID_SIZE || y < 0 || y >= GRID_SIZE);
 	}
 
-	public void setCell(int x, int y, int mark) {
+	/**
+	 * Sets a particular cell with a mark
+	 * 
+	 * @param x
+	 *            the x coordinate
+	 * @param y
+	 *            the y coordinate
+	 * @param mark
+	 *            The int to place in the grid
+	 */
+	private void setCell(int x, int y, int mark) {
 		if (!outOfRange(x, y))
 			grid[y][x] = mark;
 	}
 
-	public boolean cellUsed(int x, int y) {
+	/**
+	 * Anonymous checking of a cell's status, checks if a cell has been called
+	 * before without revealing what's in it
+	 * 
+	 * @param x
+	 *            the x coordinate
+	 * @param y
+	 *            the y coordinate
+	 * @return false if the cell is marked with HIT or MISS, true otherwise
+	 */
+	public boolean isEmpty(int x, int y) {
 		if (outOfRange(x, y))
 			return true;
-
 		int stat = getStatus(x, y);
-
-		return stat == MISS || stat == HIT;
+		return stat != MISS && stat != HIT;
 	}
 
+	/**
+	 * Checks if a cell has been marked with Board.HIT
+	 * 
+	 * @param x
+	 *            the x coordinate
+	 * @param y
+	 *            the y coordinate
+	 * @return true if getStatus(x, y) == Board.HIT
+	 */
+	public boolean isHit(int x, int y) {
+		return getStatus(x, y) == Board.HIT;
+	}
+
+	/**
+	 * Checks if a cell has been marked with Board.MISS
+	 * 
+	 * @param x
+	 *            the x coordinate
+	 * @param y
+	 *            the y coordinate
+	 * @return true if getStatus(x, y) == Board.MISS
+	 */
+	public boolean isMiss(int x, int y) {
+		return getStatus(x, y) == Board.MISS;
+	}
+
+	/**
+	 * Calls the move on a cell and returns the result. This also marks the grid as
+	 * well
+	 * 
+	 * @param x
+	 *            move x coordinate
+	 * @param y
+	 *            move y coordinate
+	 * @return either HIT {ship hit}, MISS {no hit} or DEAD {ship destroyed}
+	 */
 	public int hitCell(int x, int y) {
 		if (outOfRange(x, y)) {
 			return ERROR;
@@ -145,7 +292,27 @@ public class Board {
 		return mark;
 	}
 
+	/**
+	 * Helper method, converts the result of Player.play() to a relevant String
+	 * 
+	 * @param m
+	 *            an array of {x, y}
+	 * @return A string representation such as "B7" for {1, 6}
+	 */
 	public static String coordinatesToString(int[] m) {
-		return X_AXIS[m[0]] + (m[1] + 1);
+		char letter = (char) ('A' + m[0]);
+		return letter + String.valueOf(m[1] + 1);
+	}
+
+	public void reset() {
+		fleet.forEach((Ship ship) -> {
+			ship.fix();
+		});
+
+		for (int y = 0; y < GRID_SIZE; y++) {
+			for (int x = 0; x < GRID_SIZE; x++) {
+				this.grid[y][x] = EMPTY;
+			}
+		}
 	}
 }
