@@ -58,7 +58,7 @@ public class Board {
 	 *            Toggle for an additional piece of information at the bottom of the
 	 *            board describing the number of ships left and their 'health'
 	 */
-	public void showBoard(boolean showShips, boolean showFleetHealth) {
+	public void printBoard(boolean showShips, boolean showFleetHealth) {
 
 		int lineSize = 4 + GRID_SIZE * 2;
 		for (int i = 0; i < lineSize; i++)

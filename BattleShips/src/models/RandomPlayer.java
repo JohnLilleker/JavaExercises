@@ -22,49 +22,56 @@ public class RandomPlayer extends Player {
 		Collections.shuffle(allMoves);
 
 		// an index for choosing a location
+		// this means every attempt will try at a different
 		int locationIndex = 0;
 
 		// for each ship
 		for (Ship boat : getBoard().getFleet()) {
 
-			boolean canPlace = false;
+			int x, y;
 
 			// while the ship placement is unsuccessful
-			while (!canPlace) {
-				// pick a location
+			do {
 				int[] pos = allMoves.get(locationIndex);
 				locationIndex++;
-				int x = pos[0], y = pos[1];
+				x = pos[0];
+				y = pos[1];
+				// try to place it at a different random location
+			} while (!tryShip(boat, x, y));
 
-				// vertical or horizontal placement
-				int dx = (Math.random() > 0.5) ? 1 : 0;
-				int dy = (dx == 1) ? 0 : 1;
-
-				// A way to check all 4 directions when trying to place a Ship
-				// start at the direction chosen above
-				// if it doesn't work, do the opposite direction, i.e. down instead of up, left
-				// instead of right
-				// that it doesn't work, go the other direction, so if the original was up, this
-				// will be right
-				// if that doesn't work flip direction again, left instead of right
-				int[][] attempts = { { dx, dy }, { -dx, -dy }, { dy, dx }, { -dy, -dx } };
-				// if all fail still, another location is picked
-
-				// for all four directions
-				for (int i = 0; i < 4; i++) {
-					// try to place the ship
-					if (getBoard().placeShip(boat, x, y, attempts[i][0], attempts[i][1])) {
-						// it it works, great. now move onto the next
-						canPlace = true;
-						break;
-					}
-					// otherwise keep trying
-				}
-			}
 			// this is definitely a more elegant solution than my c++ attempt
 		}
 
 		setGameReady(true);
+	}
+
+	// given a location this tries to add a boat to the grid in any of the 4
+	// directions
+	private boolean tryShip(Ship boat, int x, int y) {
+		// vertical or horizontal placement
+		int dx = (Math.random() > 0.5) ? 1 : 0;
+		int dy = (dx == 1) ? 0 : 1;
+
+		// A way to check all 4 directions when trying to place a Ship
+		// start at the direction chosen above
+		// if it doesn't work, do the opposite direction, i.e. down instead of up, left
+		// instead of right
+		// that it doesn't work, go the other direction, so if the original was up, this
+		// will be right
+		// if that doesn't work flip direction again, left instead of right
+		int[][] attempts = { { dx, dy }, { -dx, -dy }, { dy, dx }, { -dy, -dx } };
+		// if all fail still, another location is picked
+
+		// for all four directions
+		for (int i = 0; i < 4; i++) {
+			// try to place the ship
+			if (getBoard().placeShip(boat, x, y, attempts[i][0], attempts[i][1])) {
+				// it it works, great. now move onto the next
+				return true;
+			}
+			// otherwise keep trying
+		}
+		return false;
 	}
 
 	// overridden for extra functionality

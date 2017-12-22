@@ -1,6 +1,11 @@
 package models;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,7 +33,7 @@ public class HumanPlayer extends Player {
 		for (Ship boat : fleet) {
 
 			// tell them what they have to place
-			getBoard().showBoard(true, false);
+			getBoard().printBoard(true, false);
 			System.out.println("\nPlacing a " + boat.getLength() + "x1");
 
 			boolean wrong = true;
@@ -84,45 +89,46 @@ public class HumanPlayer extends Player {
 	@Override
 	public int[] play(Board enemy) {
 
-		int[] coords = new int[2];
-
 		// show boards
 		System.out.println("Your board");
-		getBoard().showBoard(true, true);
+		getBoard().printBoard(true, true);
 		System.out.println();
 		System.out.println("Enemy board");
-		enemy.showBoard(false, true);
+		enemy.printBoard(false, true);
 
-		boolean correct = false;
+		String input;
 		do {
 			System.out.print("\nPlease enter your move: ");
-			String input = scan.nextLine().toUpperCase().replaceAll(" ", "");
+			input = scan.nextLine().toUpperCase().replaceAll(" ", "");
 
-			// user doesn't wish to play any more
-			if (input.equals("QUIT")) {
-				if (sureOfQuit()) {
-					coords[0] = -1;
-					correct = true;
-				}
-				// user would like assistance
-			} else if (input.equals("HELP")) {
-				printHelp();
-				// is this a valid move?
-			} else if (validateInput(input)) {
-				// have they already targeted it?
-				if (enemy.isEmpty(move[0], move[1])) {
-					coords = move;
-					correct = true;
-				} else {
-					System.out.println("Cell not empty");
-				}
-			} else {
-				System.out.println("Invalid input, please type help of you're struggling");
+			// true if the user gives a string that indicates turn is over
+		} while (!parseInput(input, enemy));
+
+		return move;
+	}
+
+	private boolean parseInput(String input, Board enemy) {
+		// user doesn't wish to play any more
+		if (input.equals("QUIT")) {
+			if (sureOfQuit()) {
+				move[0] = -1;
+				return true;
 			}
-
-		} while (!correct);
-
-		return coords;
+			// user would like assistance
+		} else if (input.equals("HELP")) {
+			printHelp();
+			// is this a valid move?
+		} else if (validateInput(input)) {
+			// have they already targeted it?
+			if (enemy.isEmpty(move[0], move[1])) {
+				return true;
+			} else {
+				System.out.println("Cell not empty");
+			}
+		} else {
+			System.out.println("Invalid input, please type help of you're struggling");
+		}
+		return false;
 	}
 
 	private void printHelp() {
@@ -157,6 +163,55 @@ public class HumanPlayer extends Player {
 		}
 
 		return false;
+	}
+
+	// sets the ship positions from a text file
+	public boolean setBoardFromFile(String file) {
+		// file format
+		// shipname x y direction
+
+		BufferedReader br = null;
+		// valid patterns
+
+		try {
+
+			br = new BufferedReader(new FileReader(file));
+
+			LinkedList<Character> shipsToPlace = new LinkedList<>(Arrays.asList('1', '2', '3', '4', '5', '6', '7'));
+
+			String input;
+
+			while ((input = br.readLine()) != null) {
+
+				String[] information = input.toUpperCase().split(" ");
+
+				if (information.length != 3)
+					return false;
+				// get the relevant ship [0]
+				// information[0] = {Patrol, Destroyer, Submarine, Battleship, Carrier}
+				// filter the ship out of the fleet
+				// check the ship has been placed ( check if shipsToPlace has the ID, if not
+				// return false)
+				// get the coordinates [1], run validateInput([1])
+				// get the direction [2]
+				// try to place the ship
+				// if it fails, return false
+				// remove the ID from shipsToPlace
+			}
+
+			return true;
+
+		} catch (IOException e) {
+			return false;
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 }

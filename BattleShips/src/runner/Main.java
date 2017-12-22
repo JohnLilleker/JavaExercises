@@ -23,10 +23,10 @@ public class Main {
 
 		System.out.println();
 		System.out.println(p1.getName() + "'s board");
-		p1.getBoard().showBoard(true, true);
+		p1.getBoard().printBoard(true, true);
 		System.out.println();
 		System.out.println(p2.getName() + "'s board");
-		p2.getBoard().showBoard(true, true);
+		p2.getBoard().printBoard(true, true);
 
 	}
 
