@@ -1,0 +1,7 @@
+patrol a1 right
+patrol h3 left
+destroyer c5 down
+destroyer a7 up
+submarine g9 right
+battleship a11 right
+carrier l1 up

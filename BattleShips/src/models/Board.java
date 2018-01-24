@@ -101,31 +101,8 @@ public class Board {
 		if (showFleetHealth) {
 			// show the ships
 			for (Ship boat : fleet) {
-				String name = "Boat";
-				switch (boat.getID()) {
-				case '1':
-				case '2':
-					// patrol boat
-					name = "Patrol boat";
-					break;
-				case '3':
-				case '4':
-					// 'battleship'
-					name = "Destroyer";
-					break;
-				case '5':
-					// submarine
-					name = "Submarine";
-					break;
-				case '6':
-					// 'destroyer'
-					name = "Battleship";
-					break;
-				case '7':
-					// carrier
-					name = "Carrier";
-					break;
-				}
+				String name = boatName(boat);
+
 				String health = "";
 				for (int i = 0; i < boat.getLength(); i++) {
 					if (i < boat.getLives())
@@ -137,6 +114,35 @@ public class Board {
 			}
 		}
 
+	}
+
+	public String boatName(Ship boat) {
+		String name = "";
+		switch (boat.getID()) {
+		case '1':
+		case '2':
+			// patrol boat
+			name = "Patrol";
+			break;
+		case '3':
+		case '4':
+			// 'battleship'
+			name = "Destroyer";
+			break;
+		case '5':
+			// submarine
+			name = "Submarine";
+			break;
+		case '6':
+			// 'destroyer'
+			name = "Battleship";
+			break;
+		case '7':
+			// carrier
+			name = "Carrier";
+			break;
+		}
+		return name;
 	}
 
 	/**
@@ -307,6 +313,8 @@ public class Board {
 	public void reset() {
 		fleet.forEach((Ship ship) -> {
 			ship.fix();
+			ship.setDirection("");
+			ship.setLocation("");
 		});
 
 		for (int y = 0; y < GRID_SIZE; y++) {

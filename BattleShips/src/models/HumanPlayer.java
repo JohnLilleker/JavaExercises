@@ -1,11 +1,11 @@
 package models;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,62 +28,81 @@ public class HumanPlayer extends Player {
 	@Override
 	public void setBoard() {
 
-		ArrayList<Ship> fleet = getBoard().getFleet();
+		boolean placed = false;
 
-		for (Ship boat : fleet) {
+		// repeat everything
+		do {
+			System.out.println("Do you want to place the fleet manually or from a file? ");
 
-			// tell them what they have to place
-			getBoard().printBoard(true, false);
-			System.out.println("\nPlacing a " + boat.getLength() + "x1");
+			System.out.println("1 - Manually using command line");
+			System.out.println("2 - From a file");
 
-			boolean wrong = true;
+			System.out.print("Please choose an option: ");
 
-			// til they get it right
-			while (wrong) {
-				System.out.print("Enter a coordinate: ");
-				String input = scan.nextLine().toUpperCase().replaceAll(" ", "");
+			String input = scan.nextLine();
 
-				// valid coordinate?
-				if (validateInput(input)) {
-					// empty space?
-					if (getBoard().getStatus(move[0], move[1]) == Board.EMPTY) {
-						// good, pick a direction
-						System.out.println("Placing at " + Board.coordinatesToString(move));
-						System.out.print("Choose a direction; up, down, left or right: ");
-						String direction = scan.nextLine();
-						int dx = 0, dy = 0;
-						if (direction.equalsIgnoreCase("up"))
-							dy = 1;
-						else if (direction.equalsIgnoreCase("right"))
-							dx = 1;
-						if (direction.equalsIgnoreCase("down"))
-							dy = -1;
-						else if (direction.equalsIgnoreCase("left"))
-							dx = -1;
+			if (input.contains("1")) {
+				placeShipsCMD();
 
-						// they have chosen a valid direction
-						if (dx != 0 || dy != 0) {
-							// board accepts the placement
-							if (getBoard().placeShip(boat, move[0], move[1], dx, dy)) {
-								wrong = false;
-							} else {
-								System.out.println("Bad placement");
-							}
-						} else {
-							System.out.println("Invalid direction");
-						}
+				System.out.print("Do you want to save the ship positions to a file? ");
 
-					} else {
-						System.out.println("Space not empty");
+				input = scan.nextLine().trim().toLowerCase();
+
+				if (input.charAt(0) == 'y') {
+					// write to file
+					System.out.print("What do you want to call the file? ");
+					input = scan.nextLine();
+					writeFleetToFile(input);
+				}
+
+				placed = true;
+
+			} else if (input.contains("2")) {
+				System.out.print("Enter the file path: ");
+				input = scan.nextLine();
+				String status = placeShipsFile(input);
+
+				if (status.equals("")) {
+					getBoard().printBoard(true, false);
+					System.out.print("\nAre you happy with this configuration? ");
+					input = scan.nextLine().trim().toLowerCase();
+					if (input.charAt(0) == 'y') {
+						placed = true;
 					}
 				} else {
-					System.out.println("Invalid coordinate");
+					getBoard().reset();
+					System.out.println("There was a problem with the file\n" + status);
 				}
+			} else {
+				System.out.println("Invalid input");
 			}
+		} while (!placed);
 
-		}
 		setGameReady(true);
 
+	}
+
+	private void writeFleetToFile(String file) {
+		BufferedWriter bw = null;
+
+		try {
+			bw = new BufferedWriter(new FileWriter(file));
+
+			for (Ship boat : getBoard().getFleet()) {
+				bw.write(getBoard().boatName(boat) + " " + boat.getLocation() + " " + boat.getDirection());
+				bw.newLine();
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (bw != null)
+				try {
+					bw.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
 	}
 
 	@Override
@@ -165,10 +184,65 @@ public class HumanPlayer extends Player {
 		return false;
 	}
 
+	// gets the user input from a scanner to place the ships
+	private void placeShipsCMD() {
+		ArrayList<Ship> fleet = getBoard().getFleet();
+
+		for (Ship boat : fleet) {
+
+			// tell them what they have to place
+			getBoard().printBoard(true, false);
+			System.out.println("\nPlacing a " + boat.getLength() + "x1 " + getBoard().boatName(boat));
+
+			boolean wrong = true;
+
+			// til they get it right
+			while (wrong) {
+				wrong = !tryToPlaceShip(boat);
+			}
+
+		}
+	}
+
+	private boolean tryToPlaceShip(Ship boat) {
+		System.out.print("Enter a coordinate: ");
+		String input = scan.nextLine().toUpperCase().replaceAll(" ", "");
+
+		// valid coordinate?
+		if (validateInput(input)) {
+			// empty space?
+			if (getBoard().getStatus(move[0], move[1]) == Board.EMPTY) {
+				// good, pick a direction
+				System.out.println("Placing at " + Board.coordinatesToString(move));
+				System.out.print("Choose a direction; up, down, left or right: ");
+				String direction = scan.nextLine().toUpperCase();
+
+				try {
+					if (placeShip(boat, move[0], move[1], Direction.valueOf(direction))) {
+						boat.setDirection(direction);
+						boat.setLocation(input);
+						return true;
+					} else {
+						System.out.println("Bad placement");
+					}
+				} catch (Exception e) {
+					System.out.println("Invalid direction");
+				}
+
+			} else {
+				System.out.println("Space not empty");
+			}
+		} else {
+			System.out.println("Invalid coordinate");
+		}
+		return false;
+	}
+
 	// sets the ship positions from a text file
-	public boolean setBoardFromFile(String file) {
+	// this would be even better using a gui
+	public String placeShipsFile(String file) {
 		// file format
-		// shipname x y direction
+		// shipname xy direction
 
 		BufferedReader br = null;
 		// valid patterns
@@ -177,32 +251,60 @@ public class HumanPlayer extends Player {
 
 			br = new BufferedReader(new FileReader(file));
 
-			LinkedList<Character> shipsToPlace = new LinkedList<>(Arrays.asList('1', '2', '3', '4', '5', '6', '7'));
-
 			String input;
+			int line = 1;
 
 			while ((input = br.readLine()) != null) {
+				String lineinfo = line + " : " + input;
 
 				String[] information = input.toUpperCase().split(" ");
 
 				if (information.length != 3)
-					return false;
+					return "Not enough information on line " + lineinfo;
+
+				// make the information clearer
+				String name = information[0], coords = information[1], direction_s = information[2];
+
 				// get the relevant ship [0]
 				// information[0] = {Patrol, Destroyer, Submarine, Battleship, Carrier}
-				// filter the ship out of the fleet
-				// check the ship has been placed ( check if shipsToPlace has the ID, if not
-				// return false)
+				Ship boat = getShip(name);
+
+				if (boat == null)
+					return "Invalid ship identifier on line " + lineinfo;
+
 				// get the coordinates [1], run validateInput([1])
+				if (!validateInput(coords))
+					return "Bad coordinates on line " + lineinfo;
+
 				// get the direction [2]
-				// try to place the ship
-				// if it fails, return false
-				// remove the ID from shipsToPlace
+				Direction direction;
+				try {
+					direction = Direction.valueOf(direction_s);
+				} catch (Exception e) {
+					return "Bad direction on line " + lineinfo;
+				}
+
+				if (!placeShip(boat, move[0], move[1], direction)) {
+					getBoard().printBoard(true, false);
+					return "Failed to place the ship specified on line " + lineinfo;
+				}
+
+				boat.setDirection(direction_s);
+				boat.setLocation(coords);
+
+				line++;
 			}
 
-			return true;
+			for (Ship boat : getBoard().getFleet()) {
+				if (boat.getLocation().equals("")) {
+					return "Not all boats have been placed! You are missing a " + getBoard().boatName(boat);
+				}
+			}
+
+			return "";
 
 		} catch (IOException e) {
-			return false;
+			return e.getMessage();
 		} finally {
 			if (br != null) {
 				try {
@@ -212,6 +314,66 @@ public class HumanPlayer extends Player {
 				}
 			}
 		}
+	}
+
+	private Ship getShip(String shipName) {
+		// given a string of get the
+		// relevant ship
+		// filter by shipsNotPlaced as well
+
+		char[] ids = new char[2];
+
+		switch (shipName) {
+		case "CARRIER":
+			ids[0] = '7';
+			break;
+		case "BATTLESHIP":
+			ids[0] = '6';
+			break;
+		case "SUBMARINE":
+			ids[0] = '5';
+			break;
+		case "DESTROYER":
+			ids[0] = '4';
+			ids[1] = '3';
+			break;
+		case "PATROL":
+			ids[0] = '2';
+			ids[1] = '1';
+			break;
+		default: // unknown ship name
+			return null;
+		}
+		Ship search = null;
+		for (Ship s : getBoard().getFleet()) {
+			if ((s.getID() == ids[0] || s.getID() == ids[1]) && s.getLocation().equals("")) {
+				search = s;
+				break;
+			}
+		}
+
+		return search;
+	}
+
+	private boolean placeShip(Ship boat, int x, int y, Direction direction) {
+		int dx = 0, dy = 0;
+		switch (direction) {
+		case DOWN:
+			dy = -1;
+			break;
+		case LEFT:
+			dx = -1;
+			break;
+		case RIGHT:
+			dx = 1;
+			break;
+		case UP:
+			dy = 1;
+			break;
+
+		}
+
+		return getBoard().placeShip(boat, move[0], move[1], dx, dy);
 	}
 
 }

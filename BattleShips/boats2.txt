@@ -1,0 +1,7 @@
+Carrier A1 UP
+Battleship B2 UP
+Destroyer C3 UP
+Destroyer D4 UP
+Submarine E5 UP
+Patrol F6 UP
+Patrol G7 UP

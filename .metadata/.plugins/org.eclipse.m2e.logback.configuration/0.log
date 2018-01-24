@@ -13,3 +13,210 @@
 2017-12-21 15:57:54,007 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2017-12-21 16:42:07,659 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2017-12-22 08:38:48,264 [Worker-6] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2017-12-27 11:42:50,319 [Worker-6] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2017-12-31 14:01:32,744 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-01-01 19:39:11,515 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-01-01 21:17:57,790 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-01-02 10:07:43,910 [Worker-7] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-01-08 12:51:33,381 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-01-08 14:01:25,470 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-01-08 14:31:03,295 [ModalContext] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.jar
+2018-01-08 14:31:03,457 [ModalContext] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.jar
+2018-01-08 14:31:03,484 [ModalContext] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.pom
+2018-01-08 14:31:03,529 [ModalContext] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-quickstart/1.1/maven-archetype-quickstart-1.1.pom
+2018-01-08 14:31:36,631 [Worker-20] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Collecting project info '/pom.xml' C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\pom.xml
+2018-01-08 14:31:38,806 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.5/maven-clean-plugin-2.5.jar
+2018-01-08 14:31:38,876 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.5/maven-clean-plugin-2.5.jar
+2018-01-08 14:31:39,611 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.12.4/maven-surefire-plugin-2.12.4.jar
+2018-01-08 14:31:39,661 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.12.4/maven-surefire-plugin-2.12.4.jar
+2018-01-08 14:31:39,880 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.4/maven-jar-plugin-2.4.jar
+2018-01-08 14:31:39,940 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.4/maven-jar-plugin-2.4.jar
+2018-01-08 14:31:40,125 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.jar
+2018-01-08 14:31:40,160 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.jar
+2018-01-08 14:31:40,388 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-deploy-plugin/2.7/maven-deploy-plugin-2.7.jar
+2018-01-08 14:31:40,435 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-deploy-plugin/2.7/maven-deploy-plugin-2.7.jar
+2018-01-08 14:31:40,691 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-site-plugin/3.3/maven-site-plugin-3.3.jar
+2018-01-08 14:31:40,845 [Worker-20] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-site-plugin/3.3/maven-site-plugin-3.3.jar
+2018-01-08 14:31:48,148 [Worker-20] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: test:test:0.0.1-SNAPSHOT @ C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\pom.xml.
+2018-01-08 14:31:51,314 [Worker-20] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /test/src/main/java
+2018-01-08 14:31:51,326 [Worker-20] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /test/src/test/java
+2018-01-08 14:31:52,301 [Worker-20] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 15 sec
+2018-01-08 14:32:02,125 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:32:02,126 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 14:32:02,138 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:32:02,139 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 14:35:46,244 [Worker-35] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: test:test:0.0.1-SNAPSHOT @ C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\pom.xml.
+2018-01-08 14:35:46,496 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-api/2.53.1/selenium-api-2.53.1.pom
+2018-01-08 14:35:46,528 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-api/2.53.1/selenium-api-2.53.1.pom
+2018-01-08 14:35:46,552 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-parent/2.53.1/selenium-parent-2.53.1.pom
+2018-01-08 14:35:46,623 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-parent/2.53.1/selenium-parent-2.53.1.pom
+2018-01-08 14:35:46,654 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/guava/guava/19.0/guava-19.0.pom
+2018-01-08 14:35:46,679 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/guava/guava/19.0/guava-19.0.pom
+2018-01-08 14:35:46,710 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/19.0/guava-parent-19.0.pom
+2018-01-08 14:35:46,738 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/19.0/guava-parent-19.0.pom
+2018-01-08 14:35:46,812 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.3.1/gson-2.3.1.pom
+2018-01-08 14:35:46,837 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.3.1/gson-2.3.1.pom
+2018-01-08 14:35:46,880 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+2018-01-08 14:35:46,901 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+2018-01-08 14:35:46,933 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-chrome-driver/2.53.1/selenium-chrome-driver-2.53.1.pom
+2018-01-08 14:35:46,954 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-chrome-driver/2.53.1/selenium-chrome-driver-2.53.1.pom
+2018-01-08 14:35:46,990 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-remote-driver/2.53.1/selenium-remote-driver-2.53.1.pom
+2018-01-08 14:35:47,046 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-remote-driver/2.53.1/selenium-remote-driver-2.53.1.pom
+2018-01-08 14:35:47,147 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.pom
+2018-01-08 14:35:47,172 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.pom
+2018-01-08 14:35:47,201 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5.1/httpclient-4.5.1.pom
+2018-01-08 14:35:47,232 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5.1/httpclient-4.5.1.pom
+2018-01-08 14:35:47,257 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.5.1/httpcomponents-client-4.5.1.pom
+2018-01-08 14:35:47,298 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.5.1/httpcomponents-client-4.5.1.pom
+2018-01-08 14:35:47,324 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/project/7/project-7.pom
+2018-01-08 14:35:47,366 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/project/7/project-7.pom
+2018-01-08 14:35:47,403 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.3/httpcore-4.4.3.pom
+2018-01-08 14:35:47,428 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.3/httpcore-4.4.3.pom
+2018-01-08 14:35:47,456 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-core/4.4.3/httpcomponents-core-4.4.3.pom
+2018-01-08 14:35:47,491 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-core/4.4.3/httpcomponents-core-4.4.3.pom
+2018-01-08 14:35:47,521 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.pom
+2018-01-08 14:35:47,554 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.pom
+2018-01-08 14:35:47,638 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.pom
+2018-01-08 14:35:47,666 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.pom
+2018-01-08 14:35:47,698 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/32/commons-parent-32.pom
+2018-01-08 14:35:47,764 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/32/commons-parent-32.pom
+2018-01-08 14:35:47,807 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.3/commons-exec-1.3.pom
+2018-01-08 14:35:47,832 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.3/commons-exec-1.3.pom
+2018-01-08 14:35:47,871 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/35/commons-parent-35.pom
+2018-01-08 14:35:47,925 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/35/commons-parent-35.pom
+2018-01-08 14:35:47,977 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/apache/15/apache-15.pom
+2018-01-08 14:35:48,000 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/apache/15/apache-15.pom
+2018-01-08 14:35:48,047 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/4.1.0/jna-4.1.0.pom
+2018-01-08 14:35:48,073 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/4.1.0/jna-4.1.0.pom
+2018-01-08 14:35:48,104 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.pom
+2018-01-08 14:35:48,131 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.pom
+2018-01-08 14:35:48,190 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-api/2.53.1/selenium-api-2.53.1.jar
+2018-01-08 14:35:48,334 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-api/2.53.1/selenium-api-2.53.1.jar
+2018-01-08 14:35:48,364 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar
+2018-01-08 14:35:50,314 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar
+2018-01-08 14:35:50,370 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.3.1/gson-2.3.1.jar
+2018-01-08 14:35:50,794 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.3.1/gson-2.3.1.jar
+2018-01-08 14:35:50,822 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-chrome-driver/2.53.1/selenium-chrome-driver-2.53.1.jar
+2018-01-08 14:35:50,844 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-chrome-driver/2.53.1/selenium-chrome-driver-2.53.1.jar
+2018-01-08 14:35:50,882 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-remote-driver/2.53.1/selenium-remote-driver-2.53.1.jar
+2018-01-08 14:35:51,483 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-remote-driver/2.53.1/selenium-remote-driver-2.53.1.jar
+2018-01-08 14:35:51,537 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar
+2018-01-08 14:35:52,450 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar
+2018-01-08 14:35:52,501 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5.1/httpclient-4.5.1.jar
+2018-01-08 14:35:54,410 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5.1/httpclient-4.5.1.jar
+2018-01-08 14:35:54,534 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.3/httpcore-4.4.3.jar
+2018-01-08 14:35:55,754 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.3/httpcore-4.4.3.jar
+2018-01-08 14:35:55,779 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.jar
+2018-01-08 14:35:56,032 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.jar
+2018-01-08 14:35:56,157 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.jar
+2018-01-08 14:35:57,268 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.jar
+2018-01-08 14:35:57,295 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar
+2018-01-08 14:35:57,573 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar
+2018-01-08 14:35:57,662 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/4.1.0/jna-4.1.0.jar
+2018-01-08 14:36:01,314 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/4.1.0/jna-4.1.0.jar
+2018-01-08 14:36:01,370 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.jar
+2018-01-08 14:36:05,803 [Worker-35] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.jar
+2018-01-08 14:36:10,362 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:36:10,365 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 14:36:10,371 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:36:10,372 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 14:36:12,119 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:36:12,120 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 14:36:12,122 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:36:12,122 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 14:38:17,740 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:38:17,740 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 14:38:17,743 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:38:17,743 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 14:38:43,791 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:38:43,791 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 14:38:43,793 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:38:43,794 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 14:40:06,597 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:40:06,598 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 14:40:06,621 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:40:06,621 [Worker-37] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 14:54:13,828 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:54:13,828 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 14:54:13,830 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:54:13,831 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 14:56:51,293 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:56:51,293 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 14:56:51,299 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:56:51,299 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 14:57:02,277 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:57:02,277 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 14:57:02,282 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 14:57:02,283 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:01:40,245 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:01:40,246 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:01:40,249 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:01:40,250 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:08:59,897 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:08:59,897 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:08:59,900 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:08:59,908 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:14:37,173 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:14:37,174 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:14:37,175 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:14:37,176 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:18:15,539 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:18:15,539 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:18:15,541 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:18:15,541 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:18:27,119 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:18:27,119 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:18:27,121 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:18:27,122 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:24:53,896 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:24:53,897 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:24:53,899 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:24:53,899 [Worker-53] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:27:22,782 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:27:22,782 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:27:22,785 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:27:22,786 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:30:31,587 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:30:31,587 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:30:31,611 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:30:31,646 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:31:12,701 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:31:12,702 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:31:12,707 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:31:12,707 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:32:52,446 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:32:52,447 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:32:52,449 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:32:52,450 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:39:54,577 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:39:54,578 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:39:54,580 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:39:54,580 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:39:59,953 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:39:59,954 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:39:59,955 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:39:59,955 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:40:20,529 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:40:20,529 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:40:20,531 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:40:20,531 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:41:21,769 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:41:21,769 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:41:21,770 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:41:21,771 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 15:42:18,549 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:42:18,550 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 15:42:18,552 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 15:42:18,553 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 16:02:45,052 [Worker-66] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: test:test:0.0.1-SNAPSHOT @ C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\pom.xml.
+2018-01-08 16:02:45,862 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 16:02:45,862 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 16:02:45,864 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 16:02:45,865 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 16:03:18,518 [Worker-67] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: test:test:0.0.1-SNAPSHOT @ C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\pom.xml.
+2018-01-08 16:03:18,974 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 16:03:18,974 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\main\resources
+2018-01-08 16:03:18,977 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-01-08 16:03:18,977 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JB227\Documents\QA stuff\Work\Java\JavaExercises\test\src\test\resources
+2018-01-08 16:36:25,567 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-01-09 08:52:06,216 [Worker-4] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

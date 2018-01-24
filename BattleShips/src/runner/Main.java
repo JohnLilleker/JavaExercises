@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Player p1 = new HumanPlayer("Tester");
+		HumanPlayer p1 = new HumanPlayer("Tester");
 		p1.setBoard();
 
 		Player p2 = new SmartPlayer("Deep Mauve");
